@@ -23,7 +23,7 @@ namespace MathFuncConsole.MathObjects {
         public MathObject(string name) { this.Name = name; }
 
         /// <inheritdoc />
-        public override string ToString() {
+        public sealed override string ToString() {
             var funcs = this.GetType().GetProperties().Where(p => p.Name != "Name").Select(p => {
                 var att = p.GetCustomAttributes(typeof(NameAttribute), false).FirstOrDefault();
                 var name = ((NameAttribute) att)?.Name ?? p.Name;

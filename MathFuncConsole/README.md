@@ -66,7 +66,7 @@ This demo looks better but what is the mechanism behind? Let's have a look into 
         }
     }
 ```
-Property “Ytm” is the how I wrap a variable safely: I save its real value into _ytm and update _ytm when I set new value into Ytm and return a new reference of _ytm (works as outer in the first demo) to avoid mistaken modification. Note that Ytm is a property (that’s why its name start with a capital letter) and not a method. Quoting Ytm() is different from quoting Ytm.
+Property “Ytm” is how I wrap a variable safely: I save it into _ytm and return a new reference of _ytm (works as outer in the first demo) to avoid risky modification. Note that Ytm is a property (that’s why its name start with a capital letter) and not a method. Quoting Ytm() is different from quoting Ytm.
 
 ```C#
     var y = new Yield("yield", ytm: 0.3D);
