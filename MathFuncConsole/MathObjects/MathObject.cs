@@ -1,23 +1,36 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using MathFuncConsole.MathObjects.Applications;
 
 namespace MathFuncConsole.MathObjects {
 
     /// <summary>
-    /// The base class for all math objects. It provides multiple supportory method to deal with input/cast/print stuff.
+    /// The base class for all math objects. It provides multiple suppository method to deal with input/cast/print stuff.
     /// You shouldn't have any instance of <see cref="MathObject"/> in your code in most cases. 
-    /// You are recommanded to inherit from it and develop your own sub-class. Check <seealso cref="Bond"/> as a template for both
-    /// writting your class and XML document to help others.
+    /// You are recommended to inherit from it and develop your own sub-class. Check <seealso cref="Bond"/> as a template for both
+    /// writing your class and XML document to help others.
     /// </summary>
     public abstract class MathObject {
-        protected string Name { get; set; }
+        /// <summary>
+        /// Name of this <see cref="MathObject"/>, only used in print-out.
+        /// </summary>
+        public string Name { get; }
 
+        /// <summary>
+        /// Initial new instance of <see cref="MathObject"/>. You shouldn't call this method directly but to inherit it.
+        /// </summary>
+        /// <param name="name">Name of the <see cref="MathObject"/> for print-out</param>
+        public MathObject(string name) { this.Name = name; }
+
+        /// <inheritdoc />
         public override string ToString() {
-            var funcs = this.GetType().GetProperties().Select(p => (p.Name, p.GetValue(this).To<Func<double>>()()));
+            var funcs = this.GetType().GetProperties().Where(p => p.Name != "Name").Select(p => {
+                var att = p.GetCustomAttributes(typeof(NameAttribute), false).FirstOrDefault();
+                var name = ((NameAttribute) att)?.Name ?? p.Name;
+                return (name, p.GetValue(this).To<Func<double>>()());
+            });
             return $"{this.Name}: {string.Join("|", funcs.Select(p => $"{p.Item1} = {p.Item2:F2}"))}";
-        } 
+        }
 
         /// <summary>
         /// Wrap a <see cref="double"/> to a <see cref="Func{TResult}"/>. 
@@ -45,7 +58,7 @@ namespace MathFuncConsole.MathObjects {
             if (obj is Func<double> f) return f;
             if (obj is int i) return Wrap(i);
             if (obj is double d) return Wrap(d);
-            throw new ArgumentException("not a double or func<double>", nameof(obj));
+            throw new ArgumentException("not a double or Func<out double>", nameof(obj));
         }
     }
 
@@ -75,5 +88,16 @@ namespace MathFuncConsole.MathObjects {
         /// <param name="obj"></param>
         /// <returns></returns>
         public static T To<T>(this object obj) => (T) obj;
+
+
+    }
+
+
+    [AttributeUsage(AttributeTargets.Property)]
+    internal sealed class NameAttribute : Attribute {
+        public NameAttribute(string name) {
+            this.Name = name;
+        }
+        public string Name { get; }
     }
 }

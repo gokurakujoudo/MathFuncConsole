@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MathObjects\Applications\Bond.cs" />
+    <Compile Include="MathObjects\Applications\Yield.cs" />
     <Compile Include="MathObjects\MathObject.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
