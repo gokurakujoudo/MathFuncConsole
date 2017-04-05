@@ -4,7 +4,7 @@ namespace MathFuncConsole.MathObjects.Applications {
     /// <summary>
     /// A stock with/without constant dividend yield.
     /// </summary>
-    public class YieldStock : MathObject {
+    public class Stock : MathObject {
         #region vars
 
         private Func<double> _price;
@@ -16,14 +16,14 @@ namespace MathFuncConsole.MathObjects.Applications {
 
 
         /// <summary>
-        /// Initial instance of <see cref="YieldStock"/>.
+        /// Initial instance of <see cref="Stock"/>.
         /// </summary>
         /// <param name="name">Name of the stock</param>
         /// <param name="price">Price of the stock at time 0</param>
         /// <param name="sigma">Volatility of the stock return</param>
         /// <param name="miu">Drift of the stock return in real world</param>
         /// <param name="divd">Dividend yield of the stock</param>
-        public YieldStock(string name, object price, object sigma, object miu = null, object divd = null) : base(name) {
+        public Stock(string name, object price, object sigma, object miu = null, object divd = null) : base(name) {
             this.Price = Input(price);
             this.Sigma = Input(sigma);
             this.Miu = Input(miu, 0D);
@@ -36,7 +36,7 @@ namespace MathFuncConsole.MathObjects.Applications {
         /// <summary>
         /// Price of the stock at time 0
         /// </summary>
-        [Name("s0")]
+        [Name("S0")]
         public Func<double> Price {
             get { return () => _price(); }
             set => _price = value;
@@ -54,7 +54,7 @@ namespace MathFuncConsole.MathObjects.Applications {
         /// <summary>
         /// Drift of the stock return in real world
         /// </summary>
-        [Name("miu")]
+        [Name("μ")]
         public Func<double> Miu {
             get { return () => _miu(); }
             set => _miu = value;
@@ -63,7 +63,7 @@ namespace MathFuncConsole.MathObjects.Applications {
         /// <summary>
         /// Volatility of the stock return
         /// </summary>
-        [Name("sigma")]
+        [Name("σ")]
         public Func<double> Sigma {
             get { return () => _sigma(); }
             set => _sigma = value;

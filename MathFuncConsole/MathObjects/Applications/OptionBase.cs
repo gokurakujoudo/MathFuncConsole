@@ -31,7 +31,7 @@ namespace MathFuncConsole.MathObjects.Applications {
         /// <summary>
         /// Price of the option. No default pricing in <see cref="OptionBase"/>.
         /// </summary>
-        [Name("p")]
+        [Name("P0")]
         public Func<double> Price {
             get { return () => _price(); }
             set => _price = value;

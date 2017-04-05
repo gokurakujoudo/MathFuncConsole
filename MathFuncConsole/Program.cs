@@ -38,7 +38,8 @@ namespace MathFuncConsole {
             var y2 = new Yield("yield2", 1); // valid, int can implicitly cast to double
             var y3 = new Yield("yield3"); // valid, use default value
             var y4 = new Yield("yield4", y1.Ytm); // valid, use a reference of another variable
-            var y5 = new Yield("yield5", y1.Ytm()); // valid, use a static value of another variable, won't update with y1
+            var y5 =
+                new Yield("yield5", y1.Ytm()); // valid, use a static value of another variable, won't update with y1
             //var y6 = new Yield("yield6", y1); // invalid, y1 is neither a double or a Func<double> recommended supported
 
 
@@ -47,11 +48,21 @@ namespace MathFuncConsole {
             bond2.Dm = 1.7.Wrap();
             bond2.Cov = 60.Wrap();
 
-            var go1=new GenericOption("go1",100,120,0.5,2);
+            var go1 = new GenericOption("go1", 100, 120, 0.5, 2);
             Console.WriteLine(go1);
             go1.Pv1 = 120.Wrap();
             Console.WriteLine(go1);
 
+
+            var s1 = new Stock("s1", 100, 0.2, divd: 0.03);
+            var s2 = new Stock("s2", 120, 0.3, divd: 0.02);
+            var eo = new ExchangeOption("eo", s1, s2, 0.5, 1);
+            var deo = new DeferredExchangeOption("deo", s1, s2, 0.5, 1, 2);
+            Console.WriteLine(eo);
+            Console.WriteLine(deo);
+            s1.Price = 120.Wrap();
+            Console.WriteLine(eo);
+            Console.WriteLine(deo);
 
             Console.Read();
         }

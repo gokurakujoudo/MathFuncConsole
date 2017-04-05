@@ -46,6 +46,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MathObjects\Applications\ExchangeOption.cs" />
+    <Compile Include="MathObjects\Applications\DeferredExchangeOption.cs" />
     <Compile Include="MathObjects\Applications\GenericOption.cs" />
     <Compile Include="MathObjects\Applications\Bond.cs" />
     <Compile Include="MathObjects\Applications\OptionBase.cs" />
@@ -54,7 +56,7 @@
     <Compile Include="Helper\NormalDist.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="MathObjects\Applications\YieldStock.cs" />
+    <Compile Include="MathObjects\Applications\Stock.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

@@ -148,7 +148,7 @@ namespace MathFuncConsole.MathObjects.Applications {
         /// <summary>
         /// Bond price at the time of <see cref="T0"/>
         /// </summary>
-        [Name("p")]
+        [Name("Pt")]
         public Func<double> P {
             get { return () => _price(); }
             set => _price = value;
