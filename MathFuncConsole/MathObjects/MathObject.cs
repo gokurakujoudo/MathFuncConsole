@@ -20,15 +20,30 @@ namespace MathFuncConsole.MathObjects {
         /// Initial new instance of <see cref="MathObject"/>. You shouldn't call this method directly but to inherit it.
         /// </summary>
         /// <param name="name">Name of the <see cref="MathObject"/> for print-out</param>
-        public MathObject(string name) { this.Name = name; }
+        public MathObject(string name) {
+            this.Name = name;
+        }
+
+        /// <summary>
+        /// Universal setter method without reference to the instance. To set value, input must be valid to <see cref="Input"/>.
+        /// Please use direct setters as much as possible. Remote setter are designed for generic computation methods.
+        /// </summary>
+        /// <param name="propertyName">Name of the target property</param>
+        /// <param name="def">Default value for <see cref="Input"/></param>
+        /// <returns>A setter that you can assign new value to target property</returns>
+        public Action<object> RemoteSetter(string propertyName, double?def = null) =>
+            (newValue) => this.GetType().GetProperty(propertyName)?.SetValue(this, Input(newValue, def));
 
         /// <inheritdoc />
         public sealed override string ToString() {
-            var funcs = this.GetType().GetProperties().Where(p => p.Name != "Name").Select(p => {
-                var att = p.GetCustomAttributes(typeof(NameAttribute), false).FirstOrDefault();
-                var name = ((NameAttribute) att)?.Name ?? p.Name;
-                return (name, p.GetValue(this).To<Func<double>>()());
-            });
+            var funcs = this.GetType()
+                            .GetProperties()
+                            .Where(p => p.Name != "Name")
+                            .Select(p => {
+                                var att = p.GetCustomAttributes(typeof(NameAttribute), false).FirstOrDefault();
+                                var name = ((NameAttribute) att)?.Name ?? p.Name;
+                                return (name, p.GetValue(this).To<Func<double>>()());
+                            });
             return $"{this.Name}: {string.Join("|", funcs.Select(p => $"{p.Item1} = {p.Item2:F2}"))}";
         }
 
@@ -74,6 +89,7 @@ namespace MathFuncConsole.MathObjects {
         /// <param name="num"></param>
         /// <returns></returns>
         public static Func<double> Wrap(this double num) => () => num;
+
         /// <summary>
         /// Wrapper function for <see cref="int"/>
         /// </summary>
@@ -95,9 +111,7 @@ namespace MathFuncConsole.MathObjects {
 
     [AttributeUsage(AttributeTargets.Property)]
     internal sealed class NameAttribute : Attribute {
-        public NameAttribute(string name) {
-            this.Name = name;
-        }
+        public NameAttribute(string name) { this.Name = name; }
         public string Name { get; }
     }
 }

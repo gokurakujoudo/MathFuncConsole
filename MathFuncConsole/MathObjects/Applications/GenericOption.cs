@@ -19,15 +19,27 @@ namespace MathFuncConsole.MathObjects.Applications {
         /// </summary>
         /// <param name="name">Name of the option</param>
         /// <param name="pv1">Present value of asset to be received</param>
-        /// <param name="pv2">present value of asset to be delivered</param>
-        /// <param name="sigma">Volatility of the option</param>
+        /// <param name="pv2">Present value of asset to be delivered</param>
         /// <param name="maturity">Time to maturity</param>
-        public GenericOption(string name, object pv1, object pv2, object sigma,
-                             object maturity) : base(name, maturity) {
+        /// <param name="sigma">Volatility of the option (Pricing mode)</param>
+        /// <param name="price">Price of the option (Imp_vol mode)</param>
+        public GenericOption(string name, object pv1, object pv2, object maturity,
+                             object sigma = null, object price = null) : base(name, maturity) {
             this.Pv1 = Input(pv1);
             this.Pv2 = Input(pv2);
-            this.Sigma = Input(sigma);
-            this.Price = PriceFunc(this.Pv1, this.Pv2, this.Sigma, this.Maturity);
+            if (sigma != null) {
+                this.Sigma = Input(sigma);
+                this.Price = PriceFunc(this.Pv1, this.Pv2, this.Sigma, this.Maturity);
+            }
+            else if (price != null) {
+                this.Price = Input(price);
+                this.Sigma = () => {
+                    var tempOption = new GenericOption(string.Empty, this.Pv1, this.Pv2, this.Maturity, 0);
+                    var setter = tempOption.RemoteSetter(nameof(tempOption.Sigma));
+                    return Bisection.Search(tempOption.Price, setter, this.Price(), (0, 1));
+                };
+            }
+            else throw new ArgumentNullException(nameof(sigma), "sigma and price can't be both null");
         }
 
         /// <summary>

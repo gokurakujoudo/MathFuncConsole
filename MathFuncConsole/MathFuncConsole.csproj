@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Helper\Bisection.cs" />
     <Compile Include="MathObjects\Applications\ExchangeOption.cs" />
     <Compile Include="MathObjects\Applications\DeferredExchangeOption.cs" />
     <Compile Include="MathObjects\Applications\GenericOption.cs" />
