@@ -46,11 +46,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MathObjects\Applications\GenericOption.cs" />
     <Compile Include="MathObjects\Applications\Bond.cs" />
+    <Compile Include="MathObjects\Applications\OptionBase.cs" />
     <Compile Include="MathObjects\Applications\Yield.cs" />
     <Compile Include="MathObjects\MathObject.cs" />
+    <Compile Include="Helper\NormalDist.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="MathObjects\Applications\YieldStock.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

@@ -88,7 +88,7 @@ namespace MathFuncConsole.MathObjects.Applications {
         [Name("f")]
         public Func<double> F {
             get { return () => _faceValue(); }
-            set { _faceValue = value; }
+            set => _faceValue = value;
         }
 
         /// <summary>
@@ -97,7 +97,7 @@ namespace MathFuncConsole.MathObjects.Applications {
         [Name("T")]
         public Func<double> T {
             get { return () => _maturity(); }
-            set { _maturity = value; }
+            set => _maturity = value;
         }
 
         /// <summary>
@@ -106,7 +106,7 @@ namespace MathFuncConsole.MathObjects.Applications {
         [Name("y")]
         public Func<double> Ytm {
             get { return () => _yieldToMaturity(); }
-            set { _yieldToMaturity = value; }
+            set => _yieldToMaturity = value;
         }
 
         /// <summary>
@@ -115,7 +115,7 @@ namespace MathFuncConsole.MathObjects.Applications {
         [Name("c")]
         public Func<double> C {
             get { return () => _couponRate(); }
-            set { _couponRate = value; }
+            set => _couponRate = value;
         }
 
         /// <summary>
@@ -124,7 +124,7 @@ namespace MathFuncConsole.MathObjects.Applications {
         [Name("m")]
         public Func<double> M {
             get { return () => _payTimesPerYear(); }
-            set { _payTimesPerYear = value; }
+            set => _payTimesPerYear = value;
         }
 
         /// <summary>
@@ -133,7 +133,7 @@ namespace MathFuncConsole.MathObjects.Applications {
         [Name("t")]
         public Func<double> T0 {
             get { return () => _t0(); }
-            set { _t0 = value; }
+            set => _t0 = value;
         }
 
         /// <summary>
@@ -142,7 +142,7 @@ namespace MathFuncConsole.MathObjects.Applications {
         [Name("C")]
         public Func<double> Cp {
             get { return () => _couponPayment(); }
-            set { _couponPayment = value; }
+            set => _couponPayment = value;
         }
 
         /// <summary>
@@ -151,7 +151,7 @@ namespace MathFuncConsole.MathObjects.Applications {
         [Name("p")]
         public Func<double> P {
             get { return () => _price(); }
-            set { _price = value; }
+            set => _price = value;
         }
 
         /// <summary>
@@ -160,7 +160,7 @@ namespace MathFuncConsole.MathObjects.Applications {
         [Name("d")]
         public Func<double> D {
             get { return () => _duration(); }
-            set { _duration = value; }
+            set => _duration = value;
         }
 
         /// <summary>
@@ -169,7 +169,7 @@ namespace MathFuncConsole.MathObjects.Applications {
         [Name("dm")]
         public Func<double> Dm {
             get { return () => _modifyDuration(); }
-            set { _modifyDuration = value; }
+            set => _modifyDuration = value;
         }
 
         /// <summary>
@@ -178,7 +178,7 @@ namespace MathFuncConsole.MathObjects.Applications {
         [Name("cov")]
         public Func<double> Cov {
             get { return () => _convexity(); }
-            set { _convexity = value; }
+            set => _convexity = value;
         }
 
         #endregion

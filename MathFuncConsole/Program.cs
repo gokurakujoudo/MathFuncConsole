@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using MathFuncConsole.MathObjects;
 using MathFuncConsole.MathObjects.Applications;
 
@@ -50,6 +46,11 @@ namespace MathFuncConsole {
             bond2.P = 90.Wrap();
             bond2.Dm = 1.7.Wrap();
             bond2.Cov = 60.Wrap();
+
+            var go1=new GenericOption("go1",100,120,0.5,2);
+            Console.WriteLine(go1);
+            go1.Pv1 = 120.Wrap();
+            Console.WriteLine(go1);
 
 
             Console.Read();
