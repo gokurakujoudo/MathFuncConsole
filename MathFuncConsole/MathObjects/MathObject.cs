@@ -42,7 +42,7 @@ namespace MathFuncConsole.MathObjects {
         /// <param name="xName">Name of the target property that act as independent variable</param>
         /// <param name="yName">Name of the target property that act as dependent variable</param>
         /// <param name="defaultX">If set, after every calculations, x will be reset to this value.</param>
-        /// <returns></returns>
+        /// <returns>A function of mapping independent variable to dependent variable</returns>
         public Func<double, double> RemoteLink(string xName, string yName, double? defaultX = null) => (newX) => {
             var xProperty = this.GetType().GetProperty(xName);
             if (xProperty == null) throw new TargetInvocationException($"property {xName} cannot be found", null);
@@ -124,7 +124,7 @@ namespace MathFuncConsole.MathObjects {
         /// </summary>
         /// <typeparam name="T">To type</typeparam>
         /// <param name="obj"></param>
-        /// <returns></returns>
+        /// <returns><see longword="obj"/> as type of T</returns>
         public static T To<T>(this object obj) => (T) obj;
 
 
