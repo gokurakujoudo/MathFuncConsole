@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Reflection;
 using MathFuncConsole.MathObjects.Applications;
 
 namespace MathFuncConsole.MathObjects {
@@ -25,14 +26,35 @@ namespace MathFuncConsole.MathObjects {
         }
 
         /// <summary>
-        /// Universal setter method without reference to the instance. To set value, input must be valid to <see cref="Input"/>.
-        /// Please use direct setters as much as possible. Remote setter are designed for generic computation methods.
+        /// Universal setter method without reference to the instance. To set value, input must be <see cref="double"/>.
+        /// Please use direct setters as much as possible. Remote setter is designed for generic computation methods.
         /// </summary>
         /// <param name="propertyName">Name of the target property</param>
-        /// <param name="def">Default value for <see cref="Input"/></param>
         /// <returns>A setter that you can assign new value to target property</returns>
-        public Action<object> RemoteSetter(string propertyName, double?def = null) =>
-            (newValue) => this.GetType().GetProperty(propertyName)?.SetValue(this, Input(newValue, def));
+        public Action<double> RemoteSetter(string propertyName) =>
+            (newValue) => this.GetType().GetProperty(propertyName)?.SetValue(this, newValue.Wrap());
+
+        /// <summary>
+        /// Universal abstraction for inner relationship between two properties in this instance. This method build up a function that 
+        /// can help you get a new value of the dependent variable when you change the value of the independent variable. Input value should 
+        /// always be <see cref="double"/> and return types is also <see cref="double"/>. Remote link is designed for generic computation methods.
+        /// </summary>
+        /// <param name="xName">Name of the target property that act as independent variable</param>
+        /// <param name="yName">Name of the target property that act as dependent variable</param>
+        /// <param name="defaultX">If set, after every calculations, x will be reset to this value.</param>
+        /// <returns></returns>
+        public Func<double, double> RemoteLink(string xName, string yName, double? defaultX = null) => (newX) => {
+            var xProperty = this.GetType().GetProperty(xName);
+            if (xProperty == null) throw new TargetInvocationException($"property {xName} cannot be found", null);
+            xProperty.SetValue(this, newX.Wrap());
+            var yProperty = this.GetType().GetProperty(yName);
+            if (yProperty == null) throw new TargetInvocationException($"property {yName} cannot be found", null);
+            var newY = yProperty.GetValue(this).To<Func<double>>()();
+            if (defaultX.HasValue)
+                xProperty.SetValue(this, defaultX.Value.Wrap());
+            return newY;
+        };
+
 
         /// <inheritdoc />
         public sealed override string ToString() {
@@ -81,7 +103,7 @@ namespace MathFuncConsole.MathObjects {
     /// Helper class to implement extend methods for original data types. 
     /// Please feel free to add more useful non-type-specific methods here.
     /// </summary>
-    static class MathClassHelper {
+    public static class MathClassHelper {
 
         /// <summary>
         /// Wrapper function for <see cref="double"/>
