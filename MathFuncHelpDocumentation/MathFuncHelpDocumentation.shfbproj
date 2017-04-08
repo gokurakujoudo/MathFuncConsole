@@ -28,20 +28,20 @@
     </TransformComponentArguments>
     <SaveComponentCacheCapacity>100</SaveComponentCacheCapacity>
     <BuildAssemblerVerbosity>OnlyWarningsAndErrors</BuildAssemblerVerbosity>
-    <HelpFileFormat>OpenXml</HelpFileFormat>
+    <HelpFileFormat>Markdown</HelpFileFormat>
     <IndentHtml>False</IndentHtml>
     <KeepLogFile>True</KeepLogFile>
     <DisableCodeBlockComponent>False</DisableCodeBlockComponent>
     <CleanIntermediates>True</CleanIntermediates>
-    <VisibleItems>Attributes, ExplicitInterfaceImplementations, InheritedMembers, InheritedFrameworkMembers, Internals, Privates, PrivateFields, Protected, SealedProtected, ProtectedInternalAsProtected</VisibleItems>
-    <HelpFileVersion>1.0.0.0</HelpFileVersion>
+    <VisibleItems>Attributes, ExplicitInterfaceImplementations, InheritedMembers, Internals, Privates, PrivateFields, Protected, SealedProtected, ProtectedInternalAsProtected</VisibleItems>
+    <HelpFileVersion>0.0.0.1</HelpFileVersion>
     <MaximumGroupParts>2</MaximumGroupParts>
     <NamespaceGrouping>True</NamespaceGrouping>
     <SyntaxFilters>Standard</SyntaxFilters>
     <SdkLinkTarget>Blank</SdkLinkTarget>
     <RootNamespaceTitle>MathFunc</RootNamespaceTitle>
     <RootNamespaceContainer>True</RootNamespaceContainer>
-    <PresentationStyle>OpenXML</PresentationStyle>
+    <PresentationStyle>Markdown</PresentationStyle>
     <Preliminary>False</Preliminary>
     <NamingMethod>Guid</NamingMethod>
     <HelpTitle>Documentation for MathFuncConsole</HelpTitle>
@@ -53,6 +53,7 @@
     <DocumentationSources>
       <DocumentationSource sourceFile="..\MathFuncConsole.sln" xmlns="" />
     </DocumentationSources>
+    <MissingTags>AutoDocumentCtors</MissingTags>
   </PropertyGroup>
   <!-- There are no properties for these groups.  AnyCPU needs to appear in order for Visual Studio to perform
 			 the build.  The others are optional common platform types that may appear. -->

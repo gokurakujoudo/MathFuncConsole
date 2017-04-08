@@ -1,0 +1,38 @@
+# Bond._payTimesPerYear Field
+ 
+
+**Namespace:**&nbsp;<a href="d9e4b2f9-9258-2f31-ca55-43e6b838bbc3">MathFuncConsole.MathObjects.Applications</a><br />**Assembly:**&nbsp;MathFuncConsole (in MathFuncConsole.exe) Version: 0.0.0.1 (0.0.0.1)
+
+## Syntax
+
+**C#**<br />
+``` C#
+private Func<double> _payTimesPerYear
+```
+
+**VB**<br />
+``` VB
+Private _payTimesPerYear As Func(Of Double)
+```
+
+**C++**<br />
+``` C++
+private:
+Func<double>^ _payTimesPerYear
+```
+
+**F#**<br />
+``` F#
+val mutable private _payTimesPerYear: Func<float>
+```
+
+<br />
+
+#### Field Value
+Type: <a href="http://msdn2.microsoft.com/en-us/library/bb534960" target="_blank">Func</a>(<a href="http://msdn2.microsoft.com/en-us/library/643eft0t" target="_blank">Double</a>)
+
+## See Also
+
+
+#### Reference
+<a href="825e26af-6be9-7340-3b39-9cea3691afc1">Bond Class</a><br /><a href="d9e4b2f9-9258-2f31-ca55-43e6b838bbc3">MathFuncConsole.MathObjects.Applications Namespace</a><br />
