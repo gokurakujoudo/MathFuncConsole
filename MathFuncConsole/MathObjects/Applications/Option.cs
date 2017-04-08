@@ -1,20 +1,21 @@
 ﻿using System;
+using MathFuncConsole.Helper;
 
 namespace MathFuncConsole.MathObjects.Applications {
     /// <summary>
-    /// Base type of any options. You should not make any instances directly from <see cref="OptionBase"/>.
+    /// Base type of any options. You should not make any instances directly from <see cref="Option"/>.
     /// Please refer to <seealso cref="GenericOption"/> for implementing an option
     /// </summary>
-    public abstract class OptionBase : MathObject {
+    public abstract class Option : MathObject {
         private Func<double> _maturity;
         private Func<double> _price;
 
         /// <summary>
-        /// Initial instance for <see cref="OptionBase"/>. You should not call this directly. 
+        /// Initial instance for <see cref="Option"/>. You should not call this directly. 
         /// </summary>
         /// <param name="name">Name of the option</param>
         /// <param name="maturity">Maturity of the option</param>
-        public OptionBase(string name, object maturity) : base(name) {
+        public Option(string name, object maturity) : base(name) {
             this.Maturity = Input(maturity);
             this.Price = 0.Wrap();
         }
@@ -29,7 +30,7 @@ namespace MathFuncConsole.MathObjects.Applications {
         }
 
         /// <summary>
-        /// Price of the option. No default pricing in <see cref="OptionBase"/>.
+        /// Price of the option. No default pricing in <see cref="Option"/>.
         /// </summary>
         [Name("P0")]
         public Func<double> Price {

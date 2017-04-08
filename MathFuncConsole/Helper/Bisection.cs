@@ -21,17 +21,17 @@ namespace MathFuncConsole.Helper {
                                     (double lower, double upper) range, double eps = 1E-5) {
 
             var vLower = updateFunc(range.lower);
-            if (WithinTolerance(target, eps, vLower)) return vLower;
+            if (MathClassHelper.WithinTolerance(target, vLower, eps)) return vLower;
             var vUpper = updateFunc(range.upper);
-            if (WithinTolerance(target, eps, vUpper)) return vUpper;
+            if (MathClassHelper.WithinTolerance(target, vUpper, eps)) return vUpper;
             if (vLower * vUpper > 0) throw new ArgumentException("bad range choice");
 
             var (lower, upper) = range;
 
-            while (!WithinTolerance(lower, eps, upper)) {
+            while (!MathClassHelper.WithinTolerance(lower, upper, eps)) {
                 var guess = (lower + upper) / 2;
                 var vGuess = updateFunc(guess);
-                if (WithinTolerance(target, eps, vGuess)) return guess;
+                if (MathClassHelper.WithinTolerance(target, vGuess, eps)) return guess;
                 if ((vGuess - target) * (vUpper - target) < 0)
                     lower = guess;
                 else {
@@ -42,7 +42,5 @@ namespace MathFuncConsole.Helper {
 
             return (lower + upper) / 2;
         }
-
-        private static bool WithinTolerance(double target, double eps, double value) => Math.Abs(value - target) <= eps;
     }
 }

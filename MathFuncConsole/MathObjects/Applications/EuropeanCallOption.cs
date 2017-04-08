@@ -3,7 +3,7 @@ using System;
 using MathFuncConsole.Helper;
 
 namespace MathFuncConsole.MathObjects.Applications {
-    class EuropeanCallOption : OptionBase {
+    class EuropeanCallOption : Option {
         #region var
 
         private Func<double> _stockPrice;

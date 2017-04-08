@@ -22,6 +22,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <DocumentationFile>bin\Debug\MathFuncConsole.xml</DocumentationFile>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -47,13 +48,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Helper\Bisection.cs" />
+    <Compile Include="Helper\SimulatedAnnealing.cs" />
     <Compile Include="MathObjects\Applications\EuropeanCallOption.cs" />
     <Compile Include="MathObjects\Applications\ExchangeOption.cs" />
     <Compile Include="MathObjects\Applications\DeferredExchangeOption.cs" />
     <Compile Include="MathObjects\Applications\GenericOption.cs" />
     <Compile Include="MathObjects\Applications\Bond.cs" />
-    <Compile Include="MathObjects\Applications\OptionBase.cs" />
+    <Compile Include="MathObjects\Applications\Option.cs" />
     <Compile Include="MathObjects\Applications\Yield.cs" />
+    <Compile Include="Helper\MathClassHelper.cs" />
     <Compile Include="MathObjects\MathObject.cs" />
     <Compile Include="Helper\NormalDist.cs" />
     <Compile Include="Program.cs" />
@@ -65,5 +68,6 @@
     <None Include="packages.config" />
     <None Include="README.md" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

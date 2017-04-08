@@ -3,9 +3,9 @@ using MathFuncConsole.Helper;
 
 namespace MathFuncConsole.MathObjects.Applications {
     /// <summary>
-    /// A generic implementation of <see cref="OptionBase"/>. Using generalized Black-Scholes Formula.
+    /// A generic implementation of <see cref="Option"/>. Using generalized Black-Scholes Formula.
     /// </summary>
-    public class GenericOption : OptionBase {
+    public class GenericOption : Option {
         #region vars
 
         private Func<double> _pv1;

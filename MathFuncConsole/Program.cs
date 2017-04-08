@@ -1,4 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Linq;
+using System.Threading.Tasks;
+using MathFuncConsole.Helper;
 using MathFuncConsole.MathObjects;
 using MathFuncConsole.MathObjects.Applications;
 
@@ -40,10 +45,28 @@ namespace MathFuncConsole {
             go1.Pv2 = 100.Wrap();
             Console.WriteLine(go1);
             Console.WriteLine(go2);
+            Console.WriteLine();
+
+            var n = 100;
+            var dummys = new GenericOption[n];
+            for (var i = 0; i < n; i++)
+                dummys[i] = new GenericOption(string.Empty, pv1: go1.Pv1, pv2: go1.Pv2, maturity: go1.Maturity,
+                                              sigma: 0);
+            var xNames = new[] {nameof(GenericOption.Sigma)};
+            var range = new[] {(0D, 1D)};
+            Func<GenericOption, double> objectiveFunc = (go) => Math.Abs(go.Price() - go1.Price());
+
+            var sa = new SimulatedAnnealing<GenericOption>(dummys, xNames, range, objectiveFunc);
+
+            var saResult = sa.Run();
+
+            Console.WriteLine($"x -> {saResult.x.ToStr()}, y -> {saResult.y:E6}");
 
 
+            Console.WriteLine();
 
             Console.Read();
         }
+
     }
 }

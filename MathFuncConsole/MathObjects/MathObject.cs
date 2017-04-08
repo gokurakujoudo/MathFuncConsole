@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Reflection;
+using MathFuncConsole.Helper;
 using MathFuncConsole.MathObjects.Applications;
 
 namespace MathFuncConsole.MathObjects {
@@ -31,8 +32,23 @@ namespace MathFuncConsole.MathObjects {
         /// </summary>
         /// <param name="propertyName">Name of the target property</param>
         /// <returns>A setter that you can assign new value to target property</returns>
-        public Action<double> RemoteSetter(string propertyName) =>
-            (newValue) => this.GetType().GetProperty(propertyName)?.SetValue(this, newValue.Wrap());
+        public Action<double> RemoteSetter(string propertyName) {
+            if (this.GetType().GetProperty(propertyName) == null)
+                throw new ArgumentException($"{propertyName} property doesn't exist in {this.GetType().Name}");
+            return (newValue) => this.GetType().GetProperty(propertyName)?.SetValue(this, newValue.Wrap());
+        }
+
+        /// <summary>
+        /// Universal getter method without reference to the instance. 
+        /// Please use direct getter as much as possible. Remote setter is designed for generic computation methods.
+        /// </summary>
+        /// <param name="propertyName">Name of the target property</param>
+        /// <returns>A getter that you can get new value from target property</returns>
+        public Func<double> RemoteGetter(string propertyName) {
+            if (this.GetType().GetProperty(propertyName) == null)
+                throw new ArgumentException($"{propertyName} property doesn't exist in {this.GetType().Name}");
+            return this.GetType().GetProperty(propertyName)?.GetValue(this)?.To<Func<double>>();
+        }
 
         /// <summary>
         /// Universal abstraction for inner relationship between two properties in this instance. This method build up a function that 
@@ -97,37 +113,6 @@ namespace MathFuncConsole.MathObjects {
             if (obj is double d) return Wrap(d);
             throw new ArgumentException("not a double or Func<out double>", nameof(obj));
         }
-    }
-
-    /// <summary>
-    /// Helper class to implement extend methods for original data types. 
-    /// Please feel free to add more useful non-type-specific methods here.
-    /// </summary>
-    public static class MathClassHelper {
-
-        /// <summary>
-        /// Wrapper function for <see cref="double"/>
-        /// </summary>
-        /// <param name="num"></param>
-        /// <returns></returns>
-        public static Func<double> Wrap(this double num) => () => num;
-
-        /// <summary>
-        /// Wrapper function for <see cref="int"/>
-        /// </summary>
-        /// <param name="num"></param>
-        /// <returns></returns>
-        public static Func<double> Wrap(this int num) => () => num;
-
-        /// <summary>
-        /// Shortcut to cast a obj from one type to another. Be careful of if these types can cast directly.
-        /// </summary>
-        /// <typeparam name="T">To type</typeparam>
-        /// <param name="obj"></param>
-        /// <returns><see longword="obj"/> as type of T</returns>
-        public static T To<T>(this object obj) => (T) obj;
-
-
     }
 
 

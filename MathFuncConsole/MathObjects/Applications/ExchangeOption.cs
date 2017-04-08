@@ -4,7 +4,7 @@ namespace MathFuncConsole.MathObjects.Applications {
     /// <summary>
     /// Implementation of exchange options. Use Margrabe Formula to price.
     /// </summary>
-    public class ExchangeOption : OptionBase {
+    public class ExchangeOption : Option {
         private Func<double> _rho;
 
         /// <summary>

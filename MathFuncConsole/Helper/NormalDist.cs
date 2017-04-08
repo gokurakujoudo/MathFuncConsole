@@ -44,6 +44,23 @@ namespace MathFuncConsole.Helper {
 
         // cumulative normal distribution with mean mu and std deviation sigma
         private static double Phi(double z, double mu, double sigma) => Phi((z - mu) / sigma);
+
+        private static readonly Random Rnd = new Random();
+        private const double TWO_PI = 2 * Math.PI;
+        /// <summary>
+        /// Generate samples from normal distribution
+        /// </summary>
+        /// <param name="mu">Mean of the normal distribution</param>
+        /// <param name="sigma">Standard deviation of the normal distribution</param>
+        /// <returns></returns>
+        public static double NextSample(double mu = 0, double sigma = 1) {
+            var u1 = 1 - Rnd.NextDouble();
+            var u2 = Rnd.NextDouble();
+            var r = Math.Sqrt(-2 * Math.Log(u1));
+            var t = u2 * TWO_PI;
+            var s = r * Math.Cos(t); //r*sin(t)
+            return s * sigma + mu;
+        }
     }
 }
 
