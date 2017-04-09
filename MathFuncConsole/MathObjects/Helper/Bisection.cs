@@ -1,8 +1,7 @@
 ﻿using System;
-using MathFuncConsole.MathObjects;
 using MathFuncConsole.MathObjects.Applications;
 
-namespace MathFuncConsole.Helper {
+namespace MathFuncConsole.MathObjects.Helper {
     /// <summary>
     /// Helper class of bisection method for backing out implied variable from complex but monotonic function.
     /// </summary>
@@ -17,7 +16,7 @@ namespace MathFuncConsole.Helper {
         /// <param name="range"><see cref="ValueTuple"/> that contains lower and upper bound of the searching scope</param>
         /// <param name="eps">Tolerance of the dependent variable and searching scope, by default is <see langword="1E-5"/></param>
         /// <returns></returns>
-        public static double Search(Func<double,double> updateFunc, double target,
+        public static double Search(Func<double, double> updateFunc, double target,
                                     (double lower, double upper) range, double eps = 1E-5) {
 
             var vLower = updateFunc(range.lower);

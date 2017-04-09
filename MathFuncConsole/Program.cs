@@ -1,6 +1,6 @@
 ﻿using System;
-using MathFuncConsole.Helper;
 using MathFuncConsole.MathObjects.Applications;
+using MathFuncConsole.MathObjects.Helper;
 
 namespace MathFuncConsole {
     internal static class Program {

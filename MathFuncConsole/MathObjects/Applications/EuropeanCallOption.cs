@@ -1,6 +1,6 @@
 ﻿
 using System;
-using MathFuncConsole.Helper;
+using MathFuncConsole.MathObjects.Helper;
 
 namespace MathFuncConsole.MathObjects.Applications {
     class EuropeanCallOption : Option {

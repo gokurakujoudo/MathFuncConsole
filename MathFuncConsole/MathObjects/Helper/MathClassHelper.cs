@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace MathFuncConsole.Helper {
+namespace MathFuncConsole.MathObjects.Helper {
     /// <summary>
     /// Helper class to implement extend methods for original data types. 
     /// Please feel free to add more useful non-type-specific methods here.
@@ -38,7 +38,8 @@ namespace MathFuncConsole.Helper {
         /// <param name="target">Target value</param>
         /// <param name="eps">Absolute tolerance</param>
         /// <returns></returns>
-        public static bool WithinTolerance(this double x, double target, double eps = 1E-6) => Math.Abs(target - x) <= eps;
+        public static bool WithinTolerance(this double x, double target, double eps = 1E-6) => Math.Abs(target - x) <=
+                                                                                               eps;
 
         /// <summary>
         /// Return string of a list of double

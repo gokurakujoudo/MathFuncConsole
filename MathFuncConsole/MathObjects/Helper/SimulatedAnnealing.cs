@@ -1,14 +1,11 @@
-﻿
-using System;
+﻿using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
-using MathFuncConsole.MathObjects;
-using MathFuncConsole.MathObjects.Applications;
 
-namespace MathFuncConsole.Helper {
+namespace MathFuncConsole.MathObjects.Helper {
     /// <summary>
     /// Implementation of multi-thread Simulated Annealing Algorithm (SAA). Designed for searching numeric solution 
     /// or optimizing target function of <see cref="MathObject"/>. 
@@ -137,7 +134,7 @@ namespace MathFuncConsole.Helper {
                 this.Answer = (_x, _y);
             }
 
-            public (double[]x,double y) Answer { get; private set; }
+            public (double[]x, double y) Answer { get; private set; }
 
             public override string ToString() =>
                 $"{_id:D4}-{_itr:D6}: {_x.ToStr()} => {_y:F4}";

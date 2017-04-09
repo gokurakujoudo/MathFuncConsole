@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Linq;
 using System.Reflection;
-using MathFuncConsole.Helper;
 using MathFuncConsole.MathObjects.Applications;
+using MathFuncConsole.MathObjects.Helper;
 
 namespace MathFuncConsole.MathObjects {
 

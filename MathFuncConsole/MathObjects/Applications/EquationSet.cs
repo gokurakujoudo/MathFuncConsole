@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using MathFuncConsole.Helper;
+using MathFuncConsole.MathObjects.Helper;
 
 namespace MathFuncConsole.MathObjects.Applications {
     /// <summary>

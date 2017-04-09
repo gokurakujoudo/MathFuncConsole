@@ -1,5 +1,5 @@
 ﻿using System;
-using MathFuncConsole.Helper;
+using MathFuncConsole.MathObjects.Helper;
 
 namespace MathFuncConsole.MathObjects.Applications {
     /// <summary>
@@ -58,6 +58,7 @@ namespace MathFuncConsole.MathObjects.Applications {
         };
 
         #region property
+
         /// <summary>
         /// Present value of asset to be received
         /// </summary>

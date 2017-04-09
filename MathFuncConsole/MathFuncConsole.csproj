@@ -50,8 +50,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Helper\Bisection.cs" />
-    <Compile Include="Helper\SimulatedAnnealing.cs" />
+    <Compile Include="MathObjects\Helper\Bisection.cs" />
+    <Compile Include="MathObjects\Helper\SimulatedAnnealing.cs" />
     <Compile Include="MathObjects\Applications\EquationSet.cs" />
     <Compile Include="MathObjects\Applications\EuropeanCallOption.cs" />
     <Compile Include="MathObjects\Applications\ExchangeOption.cs" />
@@ -60,9 +60,9 @@
     <Compile Include="MathObjects\Applications\Bond.cs" />
     <Compile Include="MathObjects\Applications\Option.cs" />
     <Compile Include="MathObjects\Applications\Yield.cs" />
-    <Compile Include="Helper\MathClassHelper.cs" />
+    <Compile Include="MathObjects\Helper\MathClassHelper.cs" />
     <Compile Include="MathObjects\MathObject.cs" />
-    <Compile Include="Helper\NormalDist.cs" />
+    <Compile Include="MathObjects\Helper\NormalDist.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="MathObjects\Applications\Stock.cs" />

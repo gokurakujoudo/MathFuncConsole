@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Linq;
-using MathFuncConsole.Helper;
+using MathFuncConsole.MathObjects.Helper;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace MathFuncUnitTestProject {
@@ -12,16 +12,14 @@ namespace MathFuncUnitTestProject {
             Console.WriteLine("Testing norm dist random samples");
             var num = 10000000;
             var nm = new double[num];
-            for (var s = 0; s < num; s++)
-            {
+            for (var s = 0; s < num; s++) {
                 nm[s] = NormalDist.NextSample();
             }
             var avg = nm.Average();
             var kurt = 0D;
             var skew = 0D;
             var vari = 0D;
-            for (var s = 0; s < num; s++)
-            {
+            for (var s = 0; s < num; s++) {
                 var e = (nm[s] - avg);
                 vari += Math.Pow(e, 2);
                 skew += Math.Pow(e, 3);
