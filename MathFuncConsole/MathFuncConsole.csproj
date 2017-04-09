@@ -33,6 +33,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Baby.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -49,6 +52,7 @@
   <ItemGroup>
     <Compile Include="Helper\Bisection.cs" />
     <Compile Include="Helper\SimulatedAnnealing.cs" />
+    <Compile Include="MathObjects\Applications\EquationSet.cs" />
     <Compile Include="MathObjects\Applications\EuropeanCallOption.cs" />
     <Compile Include="MathObjects\Applications\ExchangeOption.cs" />
     <Compile Include="MathObjects\Applications\DeferredExchangeOption.cs" />
@@ -68,6 +72,8 @@
     <None Include="packages.config" />
     <None Include="README.md" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Baby.ico" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

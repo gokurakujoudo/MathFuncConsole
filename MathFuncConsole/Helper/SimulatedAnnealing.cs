@@ -6,6 +6,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using MathFuncConsole.MathObjects;
+using MathFuncConsole.MathObjects.Applications;
 
 namespace MathFuncConsole.Helper {
     /// <summary>
@@ -15,7 +16,6 @@ namespace MathFuncConsole.Helper {
     /// <typeparam name="T">Type of <see cref="MathObject"/> you want to play with</typeparam>
     public class SimulatedAnnealing<T> where T : MathObject {
         private readonly ConcurrentBag<SimulatedAnnealingWorker> _workers;
-        private readonly int _dim;
 
         /// <summary>
         /// Initial instance of <see cref="SimulatedAnnealing{T}"/>
@@ -41,8 +41,8 @@ namespace MathFuncConsole.Helper {
                 setter.Add(xNames.Select(dummy.RemoteSetter).ToArray());
                 obj.Add(() => objectiveFunc(dummy));
             }
-            _dim = ranges.Count;
-            if (_dim != xNames.Count)
+            var dim = ranges.Count;
+            if (dim != xNames.Count)
                 throw new ArgumentException("Dimensions of xName and range are not the same");
             var lower = ranges.Select(r => r.d).ToArray();
             var upper = ranges.Select(r => r.u).ToArray();
@@ -50,7 +50,7 @@ namespace MathFuncConsole.Helper {
                 throw new ArgumentException("Lower bound must be smaller than upper bound");
             _workers = new ConcurrentBag<SimulatedAnnealingWorker>(
                 setter.Select((setters, i) => new SimulatedAnnealingWorker(
-                                  i, _dim, setters, lower, upper, obj[i], temperature, iters, cooliter, debug)));
+                                  i, dim, setters, lower, upper, obj[i], temperature, iters, cooliter, debug)));
         }
 
         /// <summary>
@@ -127,7 +127,7 @@ namespace MathFuncConsole.Helper {
                     var dY = newY - _y;
                     if (_debug && _itr % 1000 == 0)
                         Console.WriteLine(
-                            $"{this}\r\n\t{_id:D4}: dy = {dY:F6}, t = {_temp} => prob = {Math.Exp(-dY / _temp):F6}");
+                            $"{this}\r\n\t{_id:D4}: dy = {dY:F6}, t = {_temp:F4} => prob = {Math.Exp(-dY / _temp):F6}");
                     if (!(dY <= 0) && !(_r.NextDouble() <= Math.Exp(-dY / _temp))) continue;
                     _x = newX;
                     _y = newY;

@@ -32,7 +32,7 @@ namespace MathFuncConsole.MathObjects {
         /// </summary>
         /// <param name="propertyName">Name of the target property</param>
         /// <returns>A setter that you can assign new value to target property</returns>
-        public Action<double> RemoteSetter(string propertyName) {
+        public virtual Action<double> RemoteSetter(string propertyName) {
             if (this.GetType().GetProperty(propertyName) == null)
                 throw new ArgumentException($"{propertyName} property doesn't exist in {this.GetType().Name}");
             return (newValue) => this.GetType().GetProperty(propertyName)?.SetValue(this, newValue.Wrap());
@@ -44,7 +44,7 @@ namespace MathFuncConsole.MathObjects {
         /// </summary>
         /// <param name="propertyName">Name of the target property</param>
         /// <returns>A getter that you can get new value from target property</returns>
-        public Func<double> RemoteGetter(string propertyName) {
+        public virtual Func<double> RemoteGetter(string propertyName) {
             if (this.GetType().GetProperty(propertyName) == null)
                 throw new ArgumentException($"{propertyName} property doesn't exist in {this.GetType().Name}");
             return this.GetType().GetProperty(propertyName)?.GetValue(this)?.To<Func<double>>();
