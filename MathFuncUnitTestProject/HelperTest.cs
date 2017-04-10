@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Diagnostics;
 using System.Linq;
 using MathFuncConsole.MathObjects.Helper;
 using Microsoft.VisualStudio.TestTools.UnitTesting;

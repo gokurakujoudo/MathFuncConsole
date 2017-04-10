@@ -12,7 +12,7 @@ namespace MathFuncConsole.MathObjects.Helper {
     /// </summary>
     /// <typeparam name="T">Type of <see cref="MathObject"/> you want to play with</typeparam>
     public class SimulatedAnnealing<T> where T : MathObject {
-        private readonly ConcurrentBag<SimulatedAnnealingWorker> _workers;
+        private ConcurrentBag<SimulatedAnnealingWorker> _workers;
 
         /// <summary>
         /// Initial instance of <see cref="SimulatedAnnealing{T}"/>
@@ -32,22 +32,32 @@ namespace MathFuncConsole.MathObjects.Helper {
                                   IReadOnlyCollection<(double d, double u)> ranges, Func<T, double> objectiveFunc,
                                   double temperature = 10000, long iters = 200000, int cooliter = 100,
                                   bool debug = false) {
-            var setter = new List<Action<double>[]>();
-            var obj = new List<Func<double>>();
-            foreach (var dummy in dummies) {
-                setter.Add(xNames.Select(dummy.RemoteSetter).ToArray());
-                obj.Add(() => objectiveFunc(dummy));
-            }
-            var dim = ranges.Count;
-            if (dim != xNames.Count)
-                throw new ArgumentException("Dimensions of xName and range are not the same");
-            var lower = ranges.Select(r => r.d).ToArray();
-            var upper = ranges.Select(r => r.u).ToArray();
-            if (lower.Where((t, i) => t >= upper[i]).Any())
-                throw new ArgumentException("Lower bound must be smaller than upper bound");
-            _workers = new ConcurrentBag<SimulatedAnnealingWorker>(
-                setter.Select((setters, i) => new SimulatedAnnealingWorker(
-                                  i, dim, setters, lower, upper, obj[i], temperature, iters, cooliter, debug)));
+            this.Intial(dummies, xNames, ranges, objectiveFunc, temperature, iters, cooliter, debug);
+        }
+
+        /// <summary>
+        /// Initial instance of <see cref="SimulatedAnnealing{T}"/>
+        /// </summary>
+        /// <param name="parameters">A object array that contains every parameters (including optional) to create an instance of <see langword="T"/></param>
+        /// <param name="xNames">Names of property from dummy as independent variables</param>
+        /// <param name="ranges">Lower and upper bounds for each independent variables </param>
+        /// <param name="objectiveFunc">Function that maps from a <see langword="T"/> to objection value. 
+        /// For solving an equation, function should be set to error from target value. For optimizing, 
+        /// function should be set for minimizing</param>
+        /// <param name="n">Number of dummies used in SAA</param>
+        /// <param name="temperature">Initial temperature for SAA. Model will converge slower with higher temperature</param>
+        /// <param name="iters">Total iterations for each dummy. SAA will be slower but more accurate if you have more iterations</param>
+        /// <param name="cooliter">Cooling interval for SAA</param>
+        /// <param name="debug">If you want to see console print-off of each 1000 turns</param>
+        public SimulatedAnnealing(object[] parameters, IReadOnlyCollection<string> xNames,
+                                  IReadOnlyCollection<(double, double)> ranges,
+                                  Func<T, double> objectiveFunc, int n = 20,
+                                  double temperature = 10000, long iters = 200000, int cooliter = 100,
+                                  bool debug = false) {
+            var dummies = new T[n];
+            for (var i = 0; i < n; i++)
+                dummies[i] = Activator.CreateInstance(typeof(T), parameters).To<T>();
+            this.Intial(dummies, xNames, ranges, objectiveFunc, temperature, iters, cooliter, debug);
         }
 
         /// <summary>
@@ -65,6 +75,28 @@ namespace MathFuncConsole.MathObjects.Helper {
             Console.WriteLine(
                 $"SAA finished: {sw.Elapsed} => x = {best.x.ToStr()}, y = {best.y:E2}");
             return best;
+        }
+
+        private void Intial(IEnumerable<T> dummies, IReadOnlyCollection<string> xNames, IReadOnlyCollection<ValueTuple<double, double>> ranges, Func<T, double> objectiveFunc,
+                            double temperature, long iters, int cooliter, bool debug)
+        {
+            var setter = new List<Action<double>[]>();
+            var obj = new List<Func<double>>();
+            foreach (var dummy in dummies)
+            {
+                setter.Add(xNames.Select(dummy.RemoteSetter).ToArray());
+                obj.Add(() => objectiveFunc(dummy));
+            }
+            var dim = ranges.Count;
+            if (dim != xNames.Count)
+                throw new ArgumentException("Dimensions of xName and range are not the same");
+            var lower = ranges.Select<(double d, double u), double>(r => r.d).ToArray();
+            var upper = ranges.Select<(double d, double u), double>(r => r.u).ToArray();
+            if (lower.Where((t, i) => t >= upper[i]).Any())
+                throw new ArgumentException("Lower bound must be smaller than upper bound");
+            _workers = new ConcurrentBag<SimulatedAnnealingWorker>(
+                setter.Select((setters, i) => new SimulatedAnnealingWorker(
+                                  i, dim, setters, lower, upper, obj[i], temperature, iters, cooliter, debug)));
         }
 
         private class SimulatedAnnealingWorker {

@@ -3,7 +3,10 @@ using System;
 using MathFuncConsole.MathObjects.Helper;
 
 namespace MathFuncConsole.MathObjects.Applications {
-    class EuropeanCallOption : Option {
+    /// <summary>
+    /// Abstraction of European call options
+    /// </summary>
+    public class EuropeanCallOption : Option {
         #region var
 
         private Func<double> _stockPrice;
@@ -14,9 +17,27 @@ namespace MathFuncConsole.MathObjects.Applications {
 
         #endregion
 
+        /// <summary>
+        /// Initial instance of <see cref="EuropeanCallOption"/>
+        /// </summary>
+        /// <param name="name">Name of the option</param>
+        /// <param name="stock">Underlying stock</param>
+        /// <param name="strike">Strike price</param>
+        /// <param name="riskFree">Risk-free rate</param>
+        /// <param name="maturity">Maturity of the option</param>
         public EuropeanCallOption(string name, Stock stock, object strike, object riskFree, object maturity) :
             this(name, stock.Price, strike, riskFree, maturity, stock.Sigma) { }
 
+        /// <summary>
+        /// Initial instance of <see cref="EuropeanCallOption"/>
+        /// </summary>
+        /// <param name="name">Name of the option</param>
+        /// <param name="stockP">Current stock price</param>
+        /// <param name="strike">Strike price</param>
+        /// <param name="riskFree">Risk-free rate</param>
+        /// <param name="maturity">Maturity of the option</param>
+        /// <param name="sigma">Sigma of the stock, pass <see langword="null"/> for implied volatility</param>
+        /// <param name="price">Price of the option, pass <see langword="null"/> for pricing from B/S</param>
         public EuropeanCallOption(string name, object stockP, object strike, object riskFree, object maturity,
                                   object sigma = null, object price = null) : base(name, maturity) {
             this.StockPrice = Input(stockP);
@@ -42,30 +63,45 @@ namespace MathFuncConsole.MathObjects.Applications {
 
         #region property
 
+        /// <summary>
+        /// Current stock price
+        /// </summary>
         [Name("S0")]
         public Func<double> StockPrice {
             get { return () => _stockPrice(); }
             set => _stockPrice = value;
         }
 
+        /// <summary>
+        /// Dividend yield of the underlying stock
+        /// </summary>
         [Name("q")]
         public Func<double> StockDivd {
             get { return () => _stockDivd(); }
             set => _stockDivd = value;
         }
 
+        /// <summary>
+        /// Strike price of this option
+        /// </summary>
         [Name("K")]
         public Func<double> Strike {
             get { return () => _strike(); }
             set => _strike = value;
         }
 
+        /// <summary>
+        /// Volatility of the stock
+        /// </summary>
         [Name("σ")]
         public Func<double> Sigma {
             get { return () => _sigma(); }
             set => _sigma = value;
         }
 
+        /// <summary>
+        /// Risk free rate
+        /// </summary>
         [Name("r")]
         public Func<double> RiskFree {
             get { return () => _riskFree(); }

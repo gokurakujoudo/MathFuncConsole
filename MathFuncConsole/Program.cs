@@ -9,11 +9,11 @@ namespace MathFuncConsole {
 
             //Demo_DynamicOptionsPricing();
             //Demo_ImpliedVolitity();
-            //Demo_SaaImpliedVolitity();
-            Demo_EquationSetSaaSolver();
+            Demo_SaaImpliedVolitity();
+            //Demo_EquationSetSaaSolver();
 
             Console.WriteLine();
-
+            
             Console.Read();
         }
 
@@ -53,18 +53,19 @@ namespace MathFuncConsole {
 
         private static void Demo_SaaImpliedVolitity() {
             var target = new GenericOption("go1", pv1: 100, pv2: 120, maturity: 1, sigma: 0.2);
-            var n = 100;
-            var dummys = new GenericOption[n];
-            for (var i = 0; i < n; i++)
-                dummys[i] = new GenericOption(string.Empty, target.Pv1, target.Pv2, target.Maturity, sigma: 0);
-            var xNames = new[] {nameof(GenericOption.Sigma)};
-            var range = new[] {(0D, 1D)};
+
+            var paras = new object[] {string.Empty, target.Pv1, target.Pv2, target.Maturity, 0, null};
+            var xNames = new[] { nameof(GenericOption.Sigma) };
+            var range = new[] { (0D, 1D) };
             Func<GenericOption, double> objectiveFunc = (go) => Math.Abs(go.Price() - target.Price());
-            var sa = new SimulatedAnnealing<GenericOption>(dummys, xNames, range, objectiveFunc);
+
+            var sa = new SimulatedAnnealing<GenericOption>(paras, xNames, range, objectiveFunc);
 
             var saResult = sa.Run();
             Console.WriteLine($"x -> {saResult.x.ToStr()}, y -> {saResult.y:E6}");
         }
+
+
 
         private static void Demo_EquationSetSaaSolver() {
             var vars = new[] {"a", "b", "c"};
