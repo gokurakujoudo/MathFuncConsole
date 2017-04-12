@@ -36,6 +36,9 @@
   <PropertyGroup>
     <ApplicationIcon>Baby.ico</ApplicationIcon>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>MathFuncConsole.Program</StartupObject>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -50,7 +53,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MathObjects\Applications\HullWhiteModel.cs" />
     <Compile Include="MathObjects\Helper\Bisection.cs" />
+    <Compile Include="MathObjects\Helper\Interpolation.cs" />
+    <Compile Include="MathObjects\Helper\MonteCarloSimulation.cs" />
     <Compile Include="MathObjects\Helper\SimulatedAnnealing.cs" />
     <Compile Include="MathObjects\Applications\EquationSet.cs" />
     <Compile Include="MathObjects\Applications\EuropeanCallOption.cs" />
