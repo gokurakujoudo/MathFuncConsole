@@ -15,18 +15,18 @@ namespace MathFuncConsole {
             var ts = new[] {
                 0, 0.255555556, 0.511111111, 0.761111111, 1.013888889, 1.269444444, 1.530555556, 1.775, 2.027777778,
                 2.291666667, 2.541666667, 2.797222222, 3.047222222, 3.302777778, 3.555555556, 3.805555556, 4.058333333,
-                4.313888889, 4.569444444, 4.819444444,
+                4.313888889, 4.569444444, 4.819444444
             };
 
             var ps = new[] {
                 1, 0.993664, 0.989978, 0.98618, 0.982123, 0.977784, 0.973149, 0.968688, 0.963922, 0.958764, 0.95371,
-                0.948381, 0.943253, 0.937892, 0.932477, 0.927016, 0.921614, 0.916074, 0.91046, 0.904898,
+                0.948381, 0.943253, 0.937892, 0.932477, 0.927016, 0.921614, 0.916074, 0.91046, 0.904898
             };
 
             var fs = new[] {
                 .0115761, 0.0134633, 0.0145677, 0.015404, 0.016344, 0.0173619, 0.0182408, 0.0188542, 0.0195574, 0.0203891,
                 0.0212078, 0.0219844, 0.0217523, 0.0223657, 0.0229775, 0.0235635, 0.0231886, 0.0236636, 0.0241312,
-                0.0245827,
+                0.0245827
             };
 
             var hw = new HullWhiteModel("hw1", .5, .05, ts, ps, fs);
@@ -82,7 +82,7 @@ namespace MathFuncConsole {
             var paras = new object[] {string.Empty, target.Pv1, target.Pv2, target.Maturity, 0, null};
             var xNames = new[] { nameof(GenericOption.Sigma) };
             var range = new[] { (0D, 1D) };
-            Func<GenericOption, double> objectiveFunc = (go) => Math.Abs(go.Price() - target.Price());
+            Func<GenericOption, double> objectiveFunc = go => Math.Abs(go.Price() - target.Price());
 
             var sa = new SimulatedAnnealing<GenericOption>(paras, xNames, range, objectiveFunc);
 
@@ -96,9 +96,9 @@ namespace MathFuncConsole {
             var vars = new[] {"a", "b", "c"};
             var ranges = new[] {(0D, 100D), (0D, 100D), (0D, 100D)};
             var equations = new Func<EquationSet, Func<double>>[] {
-                (eq) => () => Math.Pow(eq["a"](), 2) + Math.Pow(eq["b"](), 2) - Math.Pow(eq["c"](), 2),
-                (eq) => () => eq["a"]() + eq["b"]() + eq["c"]() - 12,
-                (eq) => () => eq["a"]() + 2 * eq["b"]() - 11
+                eq => () => Math.Pow(eq["a"](), 2) + Math.Pow(eq["b"](), 2) - Math.Pow(eq["c"](), 2),
+                eq => () => eq["a"]() + eq["b"]() + eq["c"]() - 12,
+                eq => () => eq["a"]() + 2 * eq["b"]() - 11
             };
             var sa = EquationSet.SaaSolver(vars, equations, ranges);
 

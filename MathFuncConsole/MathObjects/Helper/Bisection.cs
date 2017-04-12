@@ -20,17 +20,17 @@ namespace MathFuncConsole.MathObjects.Helper {
                                     (double lower, double upper) range, double eps = 1E-5) {
 
             var vLower = updateFunc(range.lower);
-            if (MathClassHelper.WithinTolerance(target, vLower, eps)) return vLower;
+            if (target.WithinTolerance(vLower, eps)) return vLower;
             var vUpper = updateFunc(range.upper);
-            if (MathClassHelper.WithinTolerance(target, vUpper, eps)) return vUpper;
+            if (target.WithinTolerance(vUpper, eps)) return vUpper;
             if (vLower * vUpper > 0) throw new ArgumentException("bad range choice");
 
             var (lower, upper) = range;
 
-            while (!MathClassHelper.WithinTolerance(lower, upper, eps)) {
+            while (!lower.WithinTolerance(upper, eps)) {
                 var guess = (lower + upper) / 2;
                 var vGuess = updateFunc(guess);
-                if (MathClassHelper.WithinTolerance(target, vGuess, eps)) return guess;
+                if (target.WithinTolerance(vGuess, eps)) return guess;
                 if ((vGuess - target) * (vUpper - target) < 0)
                     lower = guess;
                 else {

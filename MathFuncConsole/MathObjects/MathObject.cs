@@ -35,7 +35,7 @@ namespace MathFuncConsole.MathObjects {
         public virtual Action<double> RemoteSetter(string propertyName) {
             if (this.GetType().GetProperty(propertyName) == null)
                 throw new ArgumentException($"{propertyName} property doesn't exist in {this.GetType().Name}");
-            return (newValue) => this.GetType().GetProperty(propertyName)?.SetValue(this, newValue.Wrap());
+            return newValue => this.GetType().GetProperty(propertyName)?.SetValue(this, newValue.Wrap());
         }
 
         /// <summary>
@@ -59,7 +59,7 @@ namespace MathFuncConsole.MathObjects {
         /// <param name="yName">Name of the target property that act as dependent variable</param>
         /// <param name="defaultX">If set, after every calculations, x will be reset to this value.</param>
         /// <returns>A function of mapping independent variable to dependent variable</returns>
-        public Func<double, double> RemoteLink(string xName, string yName, double? defaultX = null) => (newX) => {
+        public Func<double, double> RemoteLink(string xName, string yName, double? defaultX = null) => newX => {
             var xProperty = this.GetType().GetProperty(xName);
             if (xProperty == null) throw new TargetInvocationException($"property {xName} cannot be found", null);
             xProperty.SetValue(this, newX.Wrap());

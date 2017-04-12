@@ -56,7 +56,7 @@ namespace MathFuncConsole.MathObjects.Applications {
         /// <returns>A setter that you can assign new value to target variable</returns>
         public override Action<double> RemoteSetter(string varName) {
             if (!_vars.ContainsKey(varName)) throw new ArgumentException($"Can't find in {this.Name}", nameof(varName));
-            return (f) => _vars[varName] = f.Wrap();
+            return f => _vars[varName] = f.Wrap();
         }
 
         /// <summary>
@@ -119,7 +119,7 @@ namespace MathFuncConsole.MathObjects.Applications {
                 eqs.AddEquations(equations);
                 dummys[i] = eqs;
             }
-            Func<EquationSet, double> objFunc = (eqs) => eqs.ObjectiveFunc()();
+            Func<EquationSet, double> objFunc = eqs => eqs.ObjectiveFunc()();
             return new SimulatedAnnealing<EquationSet>(dummys, vars, range, objFunc, temperature,
                                                        iters, cooliter, debug);
         }
