@@ -2,9 +2,27 @@
 using System.Linq;
 
 namespace MathFuncConsole.MathObjects.Helper {
-    class MonteCarloSimulation {
+    /// <summary>
+    /// Helper class for Monte-Carlo simulation methods
+    /// </summary>
+    public static class MonteCarloSimulation {
 
-        public static Func<double> GenerateLink(int n, Func<double> x0, Func<double, double, double> yFunc,
+        /// <summary>
+        /// Generate sample function for any given random variable x under Normal distribution and cast it into 
+        /// another random variable y
+        /// </summary>
+        /// <param name="n">Number of samples</param>
+        /// <param name="x0">Initial value of x</param>
+        /// <param name="yFunc">A function maps x to y</param>
+        /// <param name="mu0">Initial mean of x</param>
+        /// <param name="sigma0">Initial sigma of x</param>
+        /// <param name="iter">Stages in a path</param>
+        /// <param name="t0">Initial time</param>
+        /// <param name="dt">Delta time</param>
+        /// <param name="shiftFunc">Distribution shift function</param>
+        /// <returns></returns>
+        /// <exception cref="ArgumentException"></exception>
+        public static Func<double[]> GenerateSamples(int n, Func<double> x0, Func<double, double, double> yFunc,
                                                 Func<double> mu0, Func<double> sigma0, long iter = 1,
                                                 Func<double> t0 = null, Func<double> dt = null,
                                                 Func<double, double, (double, double)> shiftFunc = null) {
@@ -17,7 +35,7 @@ namespace MathFuncConsole.MathObjects.Helper {
                         var xi = x0() + NormalDist.NextSample(mu0(), sigma0());
                         ys[i] = yFunc(t, xi);
                     }
-                    return ys.Average();
+                    return ys.ToArray();
                 };
             }
 

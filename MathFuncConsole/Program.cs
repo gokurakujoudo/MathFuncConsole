@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using MathFuncConsole.MathObjects.Applications;
 using MathFuncConsole.MathObjects.Helper;
 
@@ -12,6 +13,14 @@ namespace MathFuncConsole {
             //Demo_SaaImpliedVolitity();
             //Demo_EquationSetSaaSolver();
 
+            Demo_HW_SaaSolver();
+
+            Console.WriteLine();
+
+            Console.Read();
+        }
+
+        private static void Demo_HW_SaaSolver() {
             var ts = new[] {
                 0, 0.255555556, 0.511111111, 0.761111111, 1.013888889, 1.269444444, 1.530555556, 1.775, 2.027777778,
                 2.291666667, 2.541666667, 2.797222222, 3.047222222, 3.302777778, 3.555555556, 3.805555556, 4.058333333,
@@ -24,29 +33,48 @@ namespace MathFuncConsole {
             };
 
             var fs = new[] {
-                .0115761, 0.0134633, 0.0145677, 0.015404, 0.016344, 0.0173619, 0.0182408, 0.0188542, 0.0195574, 0.0203891,
+                .0115761, 0.0134633, 0.0145677, 0.015404, 0.016344, 0.0173619, 0.0182408, 0.0188542, 0.0195574,
+                0.0203891,
                 0.0212078, 0.0219844, 0.0217523, 0.0223657, 0.0229775, 0.0235635, 0.0231886, 0.0236636, 0.0241312,
                 0.0245827
             };
 
             var hw = new HullWhiteModel("hw1", .5, .05, ts, ps, fs);
-            var p = hw.HW_P(0, ts[1], fs[0]);
-            Console.WriteLine(ps[1] - p);
 
-            for (var i = 0D; i < 5; i += .33)
-                Console.WriteLine($"{i},{Interpolation.Linear(i, ts, ps)}");
+            var t0 = 0;
+            var tAlpha = .5;
+            var notional = 1E6;
+            var samplesCount = 100;
+            var strikeAndTaos = new[] {
+                (.01, new[] {.25, .25, .25, .25}),
+                (.02, new[] {.25, .25, .25, .25, .25, .25}),
+                (.03, new[] {.25, .25, .25, .25, .25, .25, .25, .25}),
+                (.04, new[] {.25, .25, .25, .25, .25, .25, .25, .25, .25, .25}),
+            };
+            var capsTargets = strikeAndTaos
+                .Select(sat => hw.HW_CAP_CM(t0, tAlpha, sat.Item2, sat.Item1, notional, samplesCount))
+                .ToArray();
 
+            var temperature = 500;
+            var iters = 20000;
+            var cooliter = 40;
+            var ranges = new[] {(0D, 5), (0D, 0.5)};
+            var threads = 5;
 
-            Console.WriteLine();
-            
-            Console.Read();
+            var saaSolver = HullWhiteModel.HW_SaaSolver(ts, ps, fs, t0, tAlpha, strikeAndTaos, capsTargets, notional,
+                                                        ranges, samplesCount, threads, temperature, iters, cooliter,
+                                                        debug: true);
+
+            saaSolver.Run();
         }
 
+
+
         private static void Demo_DynamicOptionsPricing() {
-            var s1 = new Stock("s1", price: 100, sigma: 0.2, divd: 0.03);
-            var s2 = new Stock("s2", price: 120, sigma: 0.3, divd: 0.02);
-            var eo = new ExchangeOption("eo", s1, s2, rho: 0.5, maturity: 1);
-            var deo = new DeferredExchangeOption("deo", s1, s2, rho: 0.5, optionMaturity: 1, exchangeMaturity: 2);
+            var s1 = new Stock("s1", 100, 0.2, divd: 0.03);
+            var s2 = new Stock("s2", 120, 0.3, divd: 0.02);
+            var eo = new ExchangeOption("eo", s1, s2, 0.5, 1);
+            var deo = new DeferredExchangeOption("deo", s1, s2, 0.5, 1, 2);
             Console.WriteLine(s1);
             Console.WriteLine(s2);
             Console.WriteLine(eo);
@@ -64,8 +92,8 @@ namespace MathFuncConsole {
         }
 
         private static void Demo_ImpliedVolitity() {
-            var go1 = new GenericOption("go1", pv1: 100, pv2: 120, maturity: 1, sigma: 0.2);
-            var go2 = new GenericOption("go2", pv1: go1.Pv1, pv2: go1.Pv2, maturity: go1.Maturity, price: go1.Price);
+            var go1 = new GenericOption("go1", 100, 120, 1, 0.2);
+            var go2 = new GenericOption("go2", go1.Pv1, go1.Pv2, go1.Maturity, price: go1.Price);
             Console.WriteLine(go1);
             Console.WriteLine(go2);
 
@@ -77,7 +105,7 @@ namespace MathFuncConsole {
         }
 
         private static void Demo_SaaImpliedVolitity() {
-            var target = new GenericOption("go1", pv1: 100, pv2: 120, maturity: 1, sigma: 0.2);
+            var target = new GenericOption("go1", 100, 120, 1, 0.2);
 
             var paras = new object[] {string.Empty, target.Pv1, target.Pv2, target.Maturity, 0, null};
             var xNames = new[] { nameof(GenericOption.Sigma) };

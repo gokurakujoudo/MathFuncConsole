@@ -99,6 +99,17 @@ namespace MathFuncConsole.MathObjects.Helper {
                                   i, dim, setters, lower, upper, obj[i], temperature, iters, cooliter, debug)));
         }
 
+        /// <summary>
+        /// Searching trace of this worker
+        /// </summary>
+        /// <param name="i">Worker id</param>
+        /// <returns></returns>
+        public (double[] x, double y)[] Trace(int i) {
+            if (i < _workers.Count)
+                return _workers.ToList()[i].Trace;
+            throw new IndexOutOfRangeException();
+        }
+
         private class SimulatedAnnealingWorker {
             private readonly int _dim, _id, _cooliter;
             private readonly Action<double>[] _setters;
@@ -128,6 +139,7 @@ namespace MathFuncConsole.MathObjects.Helper {
                 _debug = debug;
                 _x = new double[_dim];
                 _y = double.MaxValue;
+                this.Trace = new (double[], double)[_end];
             }
 
             public void Run() {
@@ -157,16 +169,21 @@ namespace MathFuncConsole.MathObjects.Helper {
                     if (_debug && _itr % 1000 == 0)
                         Console.WriteLine(
                             $"{this}\r\n\t{_id:D4}: dy = {dY:F6}, t = {_temp:F4} => prob = {Math.Exp(-dY / _temp):F6}");
+                    this.Trace[_itr] = (newX, newY);
                     if (!(dY <= 0) && !(_r.NextDouble() <= Math.Exp(-dY / _temp))) continue;
                     _x = newX;
                     _y = newY;
                 }
                 sw.Stop();
                 Console.WriteLine($"{_id:D4} finished: {sw.Elapsed} min = {_y:F6}");
-                this.Answer = (_x, _y);
+                var historyBestY = this.Trace.Min(t => t.y);
+                var historyBestX = this.Trace.First(t => t.y == historyBestY).x;
+                this.Answer = (historyBestX, historyBestY);
             }
 
             public (double[]x, double y) Answer { get; private set; }
+
+            public (double[] x, double y)[] Trace { get; }
 
             public override string ToString() =>
                 $"{_id:D4}-{_itr:D6}: {_x.ToStr()} => {_y:F4}";

@@ -49,5 +49,13 @@ namespace MathFuncConsole.MathObjects.Helper {
         /// <returns></returns>
         public static string ToStr(this IEnumerable<double> list, string join = ", ") =>
             $"({string.Join(join, list.Select(s => $"{s:F6}"))})";
+
+        /// <summary>
+        /// Return string of a list of xs and y
+        /// </summary>
+        /// <param name="trace">List of xs and y</param>
+        /// <returns></returns>
+        public static string ToStr(this IEnumerable<(double[] x, double y)> trace) => string.Join(
+            "\r\n", trace.Select(t => $"{t.x.ToStr()}, {t.y:F6}"));
     }
 }
