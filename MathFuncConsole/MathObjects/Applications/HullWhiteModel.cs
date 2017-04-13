@@ -32,7 +32,7 @@ namespace MathFuncConsole.MathObjects.Applications {
             return (aT0T1, bT0T1);
         }
 
-        private double HW_ZBPrice_CF(double t0, double t1, double rT0) {
+        public double HW_ZBPrice_CF(double t0, double t1, double rT0) {
             // 3.39
             var(aT0T1, bT0T1) = this.HW_AB(t0, t1);
             return aT0T1 * Math.Exp(-bT0T1 * rT0);
