@@ -109,6 +109,8 @@ namespace MathFuncConsole {
             s1.Price = 120.Wrap();
             s2.Divd = 0.01.Wrap();
             eo.Rho = 0.7.Wrap();
+
+            s1.Price = s2.Price;
             Console.WriteLine(s1);
             Console.WriteLine(s2);
             Console.WriteLine(eo);

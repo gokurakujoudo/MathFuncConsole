@@ -1,0 +1,345 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<HelpTOC>
+
+  <HelpTOCNode Title="Welcome to the [TODO: Add project name]" Url="html/a50e1fc9-6d6b-4b73-be60-cbdfd383d35c.htm" />
+  <HelpTOCNode Id="f5056eeb-1a21-4706-99cf-df721d320912" Title="Version History" Url="html/11a16ee9-797d-44b5-be2f-0acba960ba74.htm">
+    <HelpTOCNode Title="Version 1.0.0.0" Url="html/2dd674c2-6cb2-4020-8dd0-f6893c06e8ba.htm" />
+  </HelpTOCNode>
+  <HelpTOCNode Id="c730d1a8-c98f-41a7-8c16-90f06aaac87b" Title="MathFunc" Url="html/5cb0300e-4136-e792-4bea-677c73d97f59.htm">
+    <HelpTOCNode Id="70176a5b-798b-4137-9482-9e849c638730" Title="MathFuncConsole Namespaces" Url="html/623bc835-3a07-645f-46c0-2357b2f70596.htm">
+      <HelpTOCNode Id="18181d2c-031c-427b-b995-17fae8318fd0" Title="MathFuncConsole" Url="html/e1e550fa-0852-3f46-1463-636e9bae4eac.htm">
+        <HelpTOCNode Id="ef69f34f-137b-4c36-877c-24c73884bfa5" Title="Program Class" Url="html/6484d305-744c-13fe-66c8-a8e22d9ba546.htm">
+          <HelpTOCNode Id="41565fa1-cece-4ce7-a3e8-f8f2cf702b5b" Title="Program Methods" Url="html/949b415c-b4ee-7829-b016-f04849b9a155.htm">
+            <HelpTOCNode Title="Demo_DynamicOptionsPricing Method " Url="html/4a5a9b6a-886e-144d-1fe2-d12989ec55da.htm" />
+            <HelpTOCNode Title="Demo_EquationSetSaaSolver Method " Url="html/2a7d668a-49cf-0e23-20d3-e466c01fbd4b.htm" />
+            <HelpTOCNode Title="Demo_HW Method " Url="html/bc07e7ee-0f37-0de4-163b-1bd5e9e04956.htm" />
+            <HelpTOCNode Title="Demo_HW_SaaSolver Method " Url="html/41094cd6-dd01-16f8-2a2d-45487201e246.htm" />
+            <HelpTOCNode Title="Demo_ImpliedVolitity Method " Url="html/8676ae4b-73be-62f2-58d8-2a4cdd9caecb.htm" />
+            <HelpTOCNode Title="Demo_SaaImpliedVolitity Method " Url="html/3df2f540-383d-b4ce-ac42-c6e445b1c2ee.htm" />
+            <HelpTOCNode Title="Main Method " Url="html/3857ae2c-3b7d-f357-5675-2fec8a7bd84d.htm" />
+          </HelpTOCNode>
+        </HelpTOCNode>
+      </HelpTOCNode>
+      <HelpTOCNode Id="9d6729c1-f9a9-4221-91cf-9271f326de59" Title="MathFuncConsole.MathObjects Namespaces" Url="html/f53f5256-cc92-e65a-0b6a-73354d6e7853.htm">
+        <HelpTOCNode Id="3fef03c0-b5a5-4b22-b241-debb7586f042" Title="MathFuncConsole.MathObjects" Url="html/8745ab18-90ba-9b9b-5ed1-279bdfc5b1d4.htm">
+          <HelpTOCNode Id="37923a64-a3e6-48da-8f0c-677dee0ec7a3" Title="MathObject Class" Url="html/bce605e3-e729-258a-0e66-9bfb6e48c607.htm">
+            <HelpTOCNode Title="MathObject Constructor " Url="html/2a3787bc-cddc-9016-1730-154a7b455749.htm" />
+            <HelpTOCNode Id="fe4c96c5-c582-4b1c-9d76-a43993f783d0" Title="MathObject Properties" Url="html/481c78ef-865f-1337-b716-98cd59e1f395.htm">
+              <HelpTOCNode Title="Name Property " Url="html/7c6d74af-467f-3271-ca40-a41261eb9865.htm" />
+            </HelpTOCNode>
+            <HelpTOCNode Id="8528c60d-6c2d-499a-8f6f-4240355889d5" Title="MathObject Methods" Url="html/124f0ae2-37c9-3a13-3a34-6a4e06fa7b4f.htm">
+              <HelpTOCNode Title="Input Method " Url="html/23c83275-ce6e-daab-7df4-4a3496371af4.htm" />
+              <HelpTOCNode Title="RemoteGetter Method " Url="html/090965dd-a373-63b1-08c1-bc38738ea2ad.htm" />
+              <HelpTOCNode Title="RemoteLink Method " Url="html/f27fefd1-791f-1bb1-3e1e-c8d33f566812.htm" />
+              <HelpTOCNode Title="RemoteSetter Method " Url="html/9549b6b3-3f98-bc2d-f2fe-10355f8d5464.htm" />
+              <HelpTOCNode Title="ToString Method " Url="html/da420a04-08e1-4ec7-b29f-b8446ae7263d.htm" />
+              <HelpTOCNode Title="Wrap Method " Url="html/813cb774-c61c-aad9-2c5d-fa927b887ba8.htm" />
+            </HelpTOCNode>
+          </HelpTOCNode>
+          <HelpTOCNode Id="aaa48896-3195-4b93-925c-464a19293218" Title="NameAttribute Class" Url="html/07278886-2c41-e1db-5ff8-d273191c3447.htm">
+            <HelpTOCNode Title="NameAttribute Constructor " Url="html/4355d003-7be0-bd4e-24c7-17930f7c765c.htm" />
+            <HelpTOCNode Id="d847f8ff-654c-4cdf-80fc-007587e118ee" Title="NameAttribute Properties" Url="html/71c3d4b4-3a53-914f-e83d-9d5574bf948e.htm">
+              <HelpTOCNode Title="Name Property " Url="html/46a74c74-4d3b-6e7c-9fc7-a4cc557c5dd0.htm" />
+            </HelpTOCNode>
+            <HelpTOCNode Title="NameAttribute Methods" Url="html/9c330fac-1e66-afd7-e581-d4d46dcfa4a0.htm" />
+          </HelpTOCNode>
+        </HelpTOCNode>
+        <HelpTOCNode Id="ec49001e-59a6-41e7-8262-f75aec710ec6" Title="MathFuncConsole.MathObjects.Applications" Url="html/d9e4b2f9-9258-2f31-ca55-43e6b838bbc3.htm">
+          <HelpTOCNode Id="5e92bf1b-e75a-42e1-ad86-26d48ffe755d" Title="Bond Class" Url="html/825e26af-6be9-7340-3b39-9cea3691afc1.htm">
+            <HelpTOCNode Title="Bond Constructor " Url="html/d3641eb2-fb12-49c3-2d9e-4a1d9e109408.htm" />
+            <HelpTOCNode Id="18235da6-a10d-4d64-8ef2-86d88f8c67f4" Title="Bond Properties" Url="html/cc72a997-f7a1-6bb6-df38-ac2daa57b7a5.htm">
+              <HelpTOCNode Title="C Property " Url="html/19c63809-1fe4-c900-6c24-436045d9a5a9.htm" />
+              <HelpTOCNode Title="Cov Property " Url="html/e423ca6e-0abd-263e-7bb2-5e1f22395171.htm" />
+              <HelpTOCNode Title="Cp Property " Url="html/2ae0d38c-bb13-88b0-66ea-2092e7f86f4f.htm" />
+              <HelpTOCNode Title="D Property " Url="html/6347a74e-6eb0-bdc0-8e74-527ae8c79be9.htm" />
+              <HelpTOCNode Title="Dm Property " Url="html/8db696e3-c1df-b11c-f920-0f29130e0110.htm" />
+              <HelpTOCNode Title="F Property " Url="html/ee56eae5-fba0-b647-c5a0-4f49603555d0.htm" />
+              <HelpTOCNode Title="M Property " Url="html/e17a4e0c-39d5-918c-059d-4593e820904a.htm" />
+              <HelpTOCNode Title="P Property " Url="html/a0c92551-52a2-6a5f-a730-7b9420d9fb3a.htm" />
+              <HelpTOCNode Title="T Property " Url="html/514073a5-383c-f28d-fd61-573a206c4541.htm" />
+              <HelpTOCNode Title="T0 Property " Url="html/d13b7128-a76f-9867-52aa-0e2d61abb42c.htm" />
+              <HelpTOCNode Title="Ytm Property " Url="html/841b52e4-dd4c-169e-6d1a-81e97e89f2f0.htm" />
+            </HelpTOCNode>
+            <HelpTOCNode Title="Bond Methods" Url="html/74501b26-434a-849f-6d16-8059b86f41d4.htm" />
+            <HelpTOCNode Id="97019769-1f98-44ae-9e4e-962013cde706" Title="Bond Fields" Url="html/e52f3739-cbbb-542a-c6af-d47755ea1472.htm">
+              <HelpTOCNode Title="_convexity Field" Url="html/f55d122d-0109-bc55-a4e7-6b86fdcdd947.htm" />
+              <HelpTOCNode Title="_couponPayment Field" Url="html/f875c7e5-bbf1-7f2d-0170-3aad3312daf5.htm" />
+              <HelpTOCNode Title="_couponRate Field" Url="html/4935ce1c-89b6-c6e7-3ff2-0457914e67da.htm" />
+              <HelpTOCNode Title="_duration Field" Url="html/e8eaec8c-a07c-2410-dac2-5853239fcdfd.htm" />
+              <HelpTOCNode Title="_faceValue Field" Url="html/708f080b-aced-916b-6cde-ca0232753f31.htm" />
+              <HelpTOCNode Title="_maturity Field" Url="html/fba696ba-32f7-be72-26a2-ed16e1baa04f.htm" />
+              <HelpTOCNode Title="_modifyDuration Field" Url="html/2739a3f4-794b-4335-4078-db67f7b4b459.htm" />
+              <HelpTOCNode Title="_payTimesPerYear Field" Url="html/beea8c27-71f9-3083-ad2b-ca6e4bfcb1b8.htm" />
+              <HelpTOCNode Title="_price Field" Url="html/af2941c4-bff4-eab6-bc41-01f93e691720.htm" />
+              <HelpTOCNode Title="_t0 Field" Url="html/a005c30d-f389-30b2-0dca-62e43acf94f6.htm" />
+              <HelpTOCNode Title="_yieldToMaturity Field" Url="html/82cc9927-3105-7b50-5dd8-16ee8b71b3df.htm" />
+            </HelpTOCNode>
+          </HelpTOCNode>
+          <HelpTOCNode Id="6bae0e3f-aaed-411c-a995-7d476cd7bf78" Title="DeferredExchangeOption Class" Url="html/038a4c75-6c25-a94c-6f1b-ae25c13c8b1f.htm">
+            <HelpTOCNode Title="DeferredExchangeOption Constructor " Url="html/0eb3ccc8-1603-efcd-f9fc-f944fd9f021e.htm" />
+            <HelpTOCNode Id="9c026d8e-038b-451c-834a-3aee1fdf4554" Title="DeferredExchangeOption Properties" Url="html/b22ed3e2-d46c-eaf7-ea1b-19e0bc6b52b9.htm">
+              <HelpTOCNode Title="ExchangeMaturity Property " Url="html/f21ae69d-61a4-c327-d70a-0ec9a2b74580.htm" />
+            </HelpTOCNode>
+            <HelpTOCNode Title="DeferredExchangeOption Methods" Url="html/d1ebaf15-8468-9359-ccdb-73d8f6bfbc60.htm" />
+            <HelpTOCNode Id="a52501af-3a7b-4561-8313-814c6cc048db" Title="DeferredExchangeOption Fields" Url="html/f752fb45-7cb9-b170-f648-f2302c4d29e4.htm">
+              <HelpTOCNode Title="_exchangeMaturity Field" Url="html/dd5dd06f-dc00-c785-9362-4f664f3e8c3b.htm" />
+            </HelpTOCNode>
+          </HelpTOCNode>
+          <HelpTOCNode Id="1c3d1f48-32e2-4b91-a7e3-c816999e3b93" Title="EquationSet Class" Url="html/615f7e57-04d3-cd26-8db8-1bfc03e7dd7f.htm">
+            <HelpTOCNode Id="d73a322a-4946-415b-bf6a-12afff418e43" Title="EquationSet Constructor " Url="html/4c0e4f8e-1df7-e18b-5eb2-f9181d34ad26.htm">
+              <HelpTOCNode Title="EquationSet Constructor (String, IList(String))" Url="html/cde7fb68-3453-b50d-c913-3dc617af6aa6.htm" />
+              <HelpTOCNode Title="EquationSet Constructor (String, Dictionary(String, Func(Double)), HashSet(Func(Double)))" Url="html/be42e2b3-2194-b214-5acf-416087622669.htm" />
+            </HelpTOCNode>
+            <HelpTOCNode Id="971d3428-9fcd-4e69-9d87-292619ed42b9" Title="EquationSet Properties" Url="html/380b09ee-c6d1-6081-a912-e7fa0ad41de6.htm">
+              <HelpTOCNode Title="Item Property " Url="html/b683dda8-8cb2-7a8f-84f5-617948a7c22f.htm" />
+            </HelpTOCNode>
+            <HelpTOCNode Id="2b53a363-c1ee-4a5b-b39d-19e6972450a1" Title="EquationSet Methods" Url="html/52182b1f-c785-0fef-d081-88a778a2e10a.htm">
+              <HelpTOCNode Title="AddEquation Method " Url="html/94aed167-b097-71f3-789f-847d81effecc.htm" />
+              <HelpTOCNode Title="AddEquations Method " Url="html/2f8e7f92-d009-1e82-46a4-e4d2113abe86.htm" />
+              <HelpTOCNode Title="ObjectiveFunc Method " Url="html/1f1935de-6b03-5786-f03d-7f3d2ac29a5e.htm" />
+              <HelpTOCNode Title="RemoteGetter Method " Url="html/07b7a00c-d8d2-ed3a-eaff-07da549db381.htm" />
+              <HelpTOCNode Title="RemoteSetter Method " Url="html/749d7b2a-6850-b79d-4940-c7632505fd89.htm" />
+              <HelpTOCNode Title="SaaSolver Method " Url="html/e6d2d040-d88c-0769-ae59-a255be6497f3.htm" />
+            </HelpTOCNode>
+            <HelpTOCNode Id="8e77a5de-f7e0-407c-b0da-6a9d653431ff" Title="EquationSet Fields" Url="html/292f9341-a90c-167f-c40e-c54863af80a4.htm">
+              <HelpTOCNode Title="_equations Field" Url="html/15b1e05f-594c-fa44-9a81-d1736e05e42a.htm" />
+              <HelpTOCNode Title="_vars Field" Url="html/55c64d90-1702-f91b-cdd9-9e6186c46776.htm" />
+            </HelpTOCNode>
+          </HelpTOCNode>
+          <HelpTOCNode Id="64d13098-576e-4048-a233-346a93163e4c" Title="EuropeanCallOption Class" Url="html/eba7caca-fdfc-f0d3-1b88-57d82e2ee2dc.htm">
+            <HelpTOCNode Id="64781f71-e7b4-4475-b9a6-bda16718a0f5" Title="EuropeanCallOption Constructor " Url="html/5f0109c0-d66c-2490-7173-2a99fbb481c1.htm">
+              <HelpTOCNode Title="EuropeanCallOption Constructor (String, Stock, Object, Object, Object)" Url="html/27187f5e-f82b-186a-66d1-86b24905f555.htm" />
+              <HelpTOCNode Title="EuropeanCallOption Constructor (String, Object, Object, Object, Object, Object, Object)" Url="html/67273824-7061-66a1-204f-6314e6fc6ba0.htm" />
+            </HelpTOCNode>
+            <HelpTOCNode Id="9255ed0e-9b5f-48e4-90dc-f1050f6599f3" Title="EuropeanCallOption Properties" Url="html/08a2441c-0698-2038-6f64-6bb102f4126e.htm">
+              <HelpTOCNode Title="RiskFree Property " Url="html/5f4f434e-5257-936e-d08d-6ed5fe869a1b.htm" />
+              <HelpTOCNode Title="Sigma Property " Url="html/51098b63-2721-4c52-59d6-de4693a24f0a.htm" />
+              <HelpTOCNode Title="StockDivd Property " Url="html/d019d928-002b-7820-01a3-94eadf70f4fb.htm" />
+              <HelpTOCNode Title="StockPrice Property " Url="html/f9fd50ec-8868-737d-ea44-5d091d73fd91.htm" />
+              <HelpTOCNode Title="Strike Property " Url="html/3bc63f0f-622a-fadc-384a-0f8095554c15.htm" />
+            </HelpTOCNode>
+            <HelpTOCNode Title="EuropeanCallOption Methods" Url="html/b5a4fc9e-f685-b7e4-82d4-c2725b2bbc0a.htm" />
+            <HelpTOCNode Id="d0b8df01-ce08-45bb-bf9c-aa60b161cc20" Title="EuropeanCallOption Fields" Url="html/8ed4534b-af45-1122-e99e-2fe641d0effa.htm">
+              <HelpTOCNode Title="_riskFree Field" Url="html/69f0501d-6636-b336-8bd2-fa0c542b7d50.htm" />
+              <HelpTOCNode Title="_sigma Field" Url="html/cf781bf9-d56c-6126-ee5a-2bc1f18dbd5a.htm" />
+              <HelpTOCNode Title="_stockDivd Field" Url="html/d54a421c-ed2e-68d5-19ac-1fd5f85cf4dd.htm" />
+              <HelpTOCNode Title="_stockPrice Field" Url="html/ef257c5d-a98e-6dff-30ea-95e778de76b1.htm" />
+              <HelpTOCNode Title="_strike Field" Url="html/94e19419-163f-edd3-73f8-62d37b25dbf4.htm" />
+            </HelpTOCNode>
+          </HelpTOCNode>
+          <HelpTOCNode Id="58a32e50-dc17-4419-8122-848b33a098c8" Title="ExchangeOption Class" Url="html/5f04caaf-1b1d-da0b-b9e6-a5d52e87c927.htm">
+            <HelpTOCNode Title="ExchangeOption Constructor " Url="html/9675f441-80a4-db76-208c-3425dd8811d2.htm" />
+            <HelpTOCNode Id="e8166cec-4461-4d09-80cc-0ad054cdb76a" Title="ExchangeOption Properties" Url="html/00936ea0-7744-4d4d-5217-c2de140a759e.htm">
+              <HelpTOCNode Title="Rho Property " Url="html/7e4af966-d016-1e9d-caeb-8948011c6e97.htm" />
+            </HelpTOCNode>
+            <HelpTOCNode Title="ExchangeOption Methods" Url="html/90e975b1-db53-34eb-e1ca-45fcb7d90f75.htm" />
+            <HelpTOCNode Id="06e32cde-bc73-4fed-83da-82b257eeaac9" Title="ExchangeOption Fields" Url="html/1c65ddb5-d4bf-e55b-0d80-20fbdf49fb11.htm">
+              <HelpTOCNode Title="_rho Field" Url="html/9858fc34-4260-be79-bff7-ea93362aad41.htm" />
+            </HelpTOCNode>
+          </HelpTOCNode>
+          <HelpTOCNode Id="5b95d1f1-8366-4db6-bf29-acfb2d5920a8" Title="GenericOption Class" Url="html/eab42e37-8d95-7929-eed8-12205d5a0f53.htm">
+            <HelpTOCNode Title="GenericOption Constructor " Url="html/6dcd491f-7bfd-8ab0-0391-c186b796d06f.htm" />
+            <HelpTOCNode Id="880fdfc2-6702-4db5-bced-453e1ef51eec" Title="GenericOption Properties" Url="html/bb07a5bf-e465-929c-b656-0f1cf4cec2af.htm">
+              <HelpTOCNode Title="Pv1 Property " Url="html/7b4eeab2-60e2-c422-5a07-3315b54313ad.htm" />
+              <HelpTOCNode Title="Pv2 Property " Url="html/a6b6fb03-2460-2d7b-b300-f299a9846a19.htm" />
+              <HelpTOCNode Title="Sigma Property " Url="html/d5b6b537-c6b9-f145-42be-dadbe0974e70.htm" />
+            </HelpTOCNode>
+            <HelpTOCNode Id="55f4e16a-aab9-46ac-9d39-f243f6cc81e4" Title="GenericOption Methods" Url="html/0301055b-8a1b-2974-56ed-b2d742b929a5.htm">
+              <HelpTOCNode Title="PriceFunc Method " Url="html/9fc40849-c691-61ee-515e-cac11e40fc7e.htm" />
+            </HelpTOCNode>
+            <HelpTOCNode Id="c454543c-3b6b-49ee-b2e5-2346c9d9d341" Title="GenericOption Fields" Url="html/f9c22e2c-9e57-b8d8-8f27-c05e61c1f2be.htm">
+              <HelpTOCNode Title="_pv1 Field" Url="html/49ac7fad-7cdc-1776-e660-cea50b615310.htm" />
+              <HelpTOCNode Title="_pv2 Field" Url="html/fc74d26f-035c-b495-10c2-27b4ccf5870c.htm" />
+              <HelpTOCNode Title="_sigma Field" Url="html/aa8d1c1c-029c-fb7b-5642-5dc651f21978.htm" />
+            </HelpTOCNode>
+          </HelpTOCNode>
+          <HelpTOCNode Id="5b4deb25-89c7-4414-a481-a9fd38dcf855" Title="HullWhiteModel Class" Url="html/9703a04f-ca3c-7b2c-2375-dd7c30a459b2.htm">
+            <HelpTOCNode Title="HullWhiteModel Constructor " Url="html/07c2cade-2ee8-23ef-96d4-858ac6534aa3.htm" />
+            <HelpTOCNode Id="42413506-7a40-45af-b8d5-09b4f12aa25b" Title="HullWhiteModel Properties" Url="html/98ef0479-19e5-fb94-80bf-d6c7d1ae5dba.htm">
+              <HelpTOCNode Title="A Property " Url="html/98a00362-f1cd-874d-88ed-d6647631cb96.htm" />
+              <HelpTOCNode Title="Sigma Property " Url="html/6437cbcb-fc0d-6da8-a9a2-578473f42fdc.htm" />
+            </HelpTOCNode>
+            <HelpTOCNode Id="e144a456-d6fd-435b-9554-cb33a6b26962" Title="HullWhiteModel Methods" Url="html/d38c840b-e8e9-fa4c-b879-a01907f14db7.htm">
+              <HelpTOCNode Title="HW_AB Method " Url="html/f02cf564-9737-6886-795b-535a87857729.htm" />
+              <HelpTOCNode Title="HW_CAP_CM Method " Url="html/a289d4ba-f1d3-698f-9eb1-845b44fa47c3.htm" />
+              <HelpTOCNode Title="HW_Caplets Method " Url="html/3eed61a9-50d4-4b90-e13f-0f5cd8331538.htm" />
+              <HelpTOCNode Title="HW_Caps Method " Url="html/603bc20d-7e23-1010-1f49-560a8e6eb45e.htm" />
+              <HelpTOCNode Title="HW_R_CM Method " Url="html/e77a06e6-3a70-c516-81e0-542a390a3f76.htm" />
+              <HelpTOCNode Title="HW_SaaSolver Method " Url="html/acb65b7b-1ded-4c10-6691-3a30262eea04.htm" />
+              <HelpTOCNode Title="HW_ZBPrice_CF Method " Url="html/8f367c55-fb01-31e8-5363-5e3553c0616b.htm" />
+              <HelpTOCNode Title="HW_ZBPut_CF Method " Url="html/10390df1-17b1-c147-4669-8ef2aef1b510.htm" />
+              <HelpTOCNode Title="MarketF Method " Url="html/ce7155ed-82c7-8734-0b40-135e36b3fbb0.htm" />
+              <HelpTOCNode Title="MarketP Method " Url="html/0bccfc94-f425-b5d1-c75d-8fabdc34de2b.htm" />
+            </HelpTOCNode>
+            <HelpTOCNode Id="60469004-631f-4a1d-97b3-0045cc804c7b" Title="HullWhiteModel Fields" Url="html/3e3ceab4-ce44-dccc-d24a-5bf61ad7106a.htm">
+              <HelpTOCNode Title="_alpha Field" Url="html/23b283a3-cfa5-9db1-2159-c14d4c45ecb9.htm" />
+              <HelpTOCNode Title="_marketF Field" Url="html/f1f46433-505c-2f01-c516-ee4d578b1ee3.htm" />
+              <HelpTOCNode Title="_marketP Field" Url="html/e81bbb97-7728-d6f6-880b-fe04fe49c6f2.htm" />
+              <HelpTOCNode Title="_marketT Field" Url="html/05ab5275-cd08-6e2b-a120-8b8cc6a347a0.htm" />
+              <HelpTOCNode Title="_mf Field" Url="html/e7f6c09b-a4e0-fb07-a7af-8fb7fe0a6e56.htm" />
+              <HelpTOCNode Title="_mp Field" Url="html/b59933b2-334d-045c-a16a-962f8f1023f5.htm" />
+              <HelpTOCNode Title="_sigma Field" Url="html/866c401b-d100-5f40-ee9b-11be220e1a49.htm" />
+            </HelpTOCNode>
+          </HelpTOCNode>
+          <HelpTOCNode Id="b2c16f9d-3088-4bd8-a95e-a633a7f80f36" Title="Option Class" Url="html/03a5ddd0-9c60-07f4-42e6-a2afd39c4365.htm">
+            <HelpTOCNode Title="Option Constructor " Url="html/51236c1a-fff6-35b5-4db6-cfefdaa36a4b.htm" />
+            <HelpTOCNode Id="22e8514b-1955-499c-9df0-e56627ba0a71" Title="Option Properties" Url="html/f2fd37a5-9255-56c5-c6d5-ffc434ec677b.htm">
+              <HelpTOCNode Title="Maturity Property " Url="html/df88782c-d691-8fbf-cc0e-b85e10a1a003.htm" />
+              <HelpTOCNode Title="Price Property " Url="html/e192ad57-648b-2d2c-24e2-cfd4f717d85d.htm" />
+            </HelpTOCNode>
+            <HelpTOCNode Title="Option Methods" Url="html/1bf07d5c-ccfe-d169-d741-34617317cf94.htm" />
+            <HelpTOCNode Id="14bac232-48ba-4ff2-9805-ae591a888349" Title="Option Fields" Url="html/5a5d9cf0-9438-ec14-3296-6f7ea1f6a675.htm">
+              <HelpTOCNode Title="_maturity Field" Url="html/0301d4d2-1cc6-0150-206d-11537f7cc5f4.htm" />
+              <HelpTOCNode Title="_price Field" Url="html/1b45e884-d560-ce8b-cd48-4580a467c2a0.htm" />
+            </HelpTOCNode>
+          </HelpTOCNode>
+          <HelpTOCNode Id="186375dc-4fbc-455f-a5ac-eda46a8e2be5" Title="Stock Class" Url="html/1df39166-cdbc-ea41-0f5d-56de5e09158b.htm">
+            <HelpTOCNode Title="Stock Constructor " Url="html/dfe955d4-3c69-1639-7d0b-d53cf85c74ce.htm" />
+            <HelpTOCNode Id="a7a7b907-ae06-42c8-b478-327c6c403a29" Title="Stock Properties" Url="html/75e1c4d7-d259-d98d-c40b-dcbf36b72e28.htm">
+              <HelpTOCNode Title="Divd Property " Url="html/82177b72-be65-8aea-a316-9a2d265ae99b.htm" />
+              <HelpTOCNode Title="Miu Property " Url="html/945b59c4-ab9b-46ec-6031-9fd1c1bd33bd.htm" />
+              <HelpTOCNode Title="Price Property " Url="html/de26ad6e-44c0-3913-83ca-04562239b87a.htm" />
+              <HelpTOCNode Title="Sigma Property " Url="html/b040dba1-93e7-fd00-87ca-de64df88c7aa.htm" />
+            </HelpTOCNode>
+            <HelpTOCNode Title="Stock Methods" Url="html/d5ac3fae-931b-2a5e-778c-cfecc8aa5ffd.htm" />
+            <HelpTOCNode Id="445adf14-78fa-48ac-94b6-4a262030cbe5" Title="Stock Fields" Url="html/6e708f5c-4a33-072b-0383-da59b22a8900.htm">
+              <HelpTOCNode Title="_divd Field" Url="html/4572b781-ab90-7f7a-99fb-66767c001c08.htm" />
+              <HelpTOCNode Title="_miu Field" Url="html/f4ee4367-e97e-aaf6-11d1-933bda368f38.htm" />
+              <HelpTOCNode Title="_price Field" Url="html/904dc076-93b3-2db1-057a-c03c072bc01d.htm" />
+              <HelpTOCNode Title="_sigma Field" Url="html/3dc07612-55b2-cc91-88f9-041d8cc71e22.htm" />
+            </HelpTOCNode>
+          </HelpTOCNode>
+          <HelpTOCNode Id="69295a2b-7063-43f5-9f40-96ffd995fb80" Title="Yield Class" Url="html/cf21bca7-6798-93de-434e-72a827d05327.htm">
+            <HelpTOCNode Title="Yield Constructor " Url="html/86583737-e9ce-728e-a3b7-33c21b160271.htm" />
+            <HelpTOCNode Id="39f3304c-1132-4b70-81dc-fbff0dc0c36d" Title="Yield Properties" Url="html/587500d8-96c7-ffe8-b5ac-32a1579c4577.htm">
+              <HelpTOCNode Title="Ytm Property " Url="html/3635ad33-5e00-630d-b021-1a7b08247d40.htm" />
+            </HelpTOCNode>
+            <HelpTOCNode Title="Yield Methods" Url="html/01467b26-62bb-79be-7c1b-1133cbf1f9a0.htm" />
+            <HelpTOCNode Id="754000be-6b5c-41ea-9c4f-ebaca6c9b5b4" Title="Yield Fields" Url="html/fe523234-a6c5-acb3-bb3e-2cda2232656d.htm">
+              <HelpTOCNode Title="_ytm Field" Url="html/c3ee8fee-8595-4866-23fb-aa5127838bcc.htm" />
+            </HelpTOCNode>
+          </HelpTOCNode>
+        </HelpTOCNode>
+        <HelpTOCNode Id="b23daffb-7607-45ca-862b-c5b821477729" Title="MathFuncConsole.MathObjects.Helper" Url="html/e8f6583b-9eac-ed50-93f4-fadc67b8f77b.htm">
+          <HelpTOCNode Id="1a462206-5be7-4dd3-963a-bf5aeecb40cd" Title="Bisection Class" Url="html/b85614f0-c9ca-392d-30a3-1c7e019b33a1.htm">
+            <HelpTOCNode Id="54b18e47-30c3-404a-a19b-7fcdabbc8982" Title="Bisection Methods" Url="html/a7ff44be-311a-2568-900d-2b284d172f16.htm">
+              <HelpTOCNode Title="Search Method " Url="html/f76a2d0e-8e71-f186-2e5d-8eed31982d0b.htm" />
+            </HelpTOCNode>
+          </HelpTOCNode>
+          <HelpTOCNode Id="5f8578bc-efbc-4f71-ac6a-bd7bb3462886" Title="Interpolation Class" Url="html/a29c8ed1-48f9-cb34-5ab3-8a461ed57baf.htm">
+            <HelpTOCNode Id="2e9478df-6617-4d13-82c9-3670435cab44" Title="Interpolation Methods" Url="html/6bbc4485-19f4-6c1b-ff94-dab3d8c20325.htm">
+              <HelpTOCNode Title="Linear Method " Url="html/2141cc9a-b9e8-92be-7d0a-b67c59b3d928.htm" />
+            </HelpTOCNode>
+          </HelpTOCNode>
+          <HelpTOCNode Id="302f8bc4-1852-4626-872a-fcb5062ebf77" Title="MathClassHelper Class" Url="html/851cb7e8-ad89-1924-a976-24306cd3a56a.htm">
+            <HelpTOCNode Id="55417cab-adc6-48f9-81eb-ce3d81892623" Title="MathClassHelper Methods" Url="html/d679ab60-fd0f-1ea4-271b-346766bd340d.htm">
+              <HelpTOCNode Title="To(T) Method " Url="html/8d81b713-7122-f8ea-5c75-7990c2041542.htm" />
+              <HelpTOCNode Id="44080948-74ca-4ea7-a93b-14c705218901" Title="ToStr Method " Url="html/ffe43b9d-de22-09c6-cfd5-e9ab82ddba6e.htm">
+                <HelpTOCNode Title="ToStr Method (IEnumerable(ValueTuple`2(Double[], Double)))" Url="html/6cb4f4eb-aba3-3cc2-9878-94a1442ba889.htm" />
+                <HelpTOCNode Title="ToStr Method (IEnumerable(Double), String)" Url="html/0f79537e-13dc-2592-ea82-385526d7b67c.htm" />
+              </HelpTOCNode>
+              <HelpTOCNode Title="WithinTolerance Method " Url="html/ba8693e4-4307-eb3f-5ce0-33c615dfacca.htm" />
+              <HelpTOCNode Id="81ab9849-1fb7-46cf-a2f2-539e542da2b9" Title="Wrap Method " Url="html/bbd2356a-4bd3-2662-2c1b-c1ea19ff384c.htm">
+                <HelpTOCNode Title="Wrap Method (Double)" Url="html/d87c52b0-2fa6-552f-a623-d0d28b2e5931.htm" />
+                <HelpTOCNode Title="Wrap Method (Int32)" Url="html/fea57edd-ddb5-3cca-aef0-303117859e7c.htm" />
+              </HelpTOCNode>
+            </HelpTOCNode>
+          </HelpTOCNode>
+          <HelpTOCNode Id="8c1f4edc-59cd-4792-b381-e2f090e1c40a" Title="MonteCarloSimulation Class" Url="html/16691467-eaf6-3bd0-06dd-942bacf0de9d.htm">
+            <HelpTOCNode Id="bf02cbb7-27cc-4ff7-9059-a0162b350d5a" Title="MonteCarloSimulation Methods" Url="html/5eaaec94-706f-db23-831d-03734eb1c38a.htm">
+              <HelpTOCNode Title="GenerateSamples Method " Url="html/bcd046ad-81c8-0b5b-9e9c-91906432ef98.htm" />
+            </HelpTOCNode>
+          </HelpTOCNode>
+          <HelpTOCNode Id="ff0881a7-6424-46a5-879f-c537447606ab" Title="MonteCarloSimulation.McWorker Class" Url="html/b57d61db-11f4-217d-9244-aec8cf40d756.htm">
+            <HelpTOCNode Title="MonteCarloSimulation.McWorker Constructor " Url="html/83f4827f-e0c1-d1df-2ca5-ba3ee2af213a.htm" />
+            <HelpTOCNode Id="5f531491-248c-4fc0-844c-3a66f78dad92" Title="McWorker Methods" Url="html/f1054a6d-0e83-56e9-2751-1e4d5feca304.htm">
+              <HelpTOCNode Title="Norm Method " Url="html/24de21c6-ce54-c864-5583-b87d8961a0fb.htm" />
+              <HelpTOCNode Title="Result Method " Url="html/9a31b9a1-cf0a-d2c3-4ea1-e4064a87c569.htm" />
+              <HelpTOCNode Title="Run Method " Url="html/ddfb10ec-3214-2406-2129-f2feb0aade27.htm" />
+            </HelpTOCNode>
+            <HelpTOCNode Id="3b01f6d8-d47b-473e-bdb8-5bdd2fc0c685" Title="McWorker Fields" Url="html/6c4205ca-db67-7ece-49cb-746cdc5a6829.htm">
+              <HelpTOCNode Title="_dt Field" Url="html/404b979e-52ba-6b42-6922-18588d1da298.htm" />
+              <HelpTOCNode Title="_iter Field" Url="html/bda05f24-4d9f-764c-74bd-75cfa585a659.htm" />
+              <HelpTOCNode Title="_mu Field" Url="html/66dcca8a-24de-ade3-9452-c4b954aa5978.htm" />
+              <HelpTOCNode Title="_r Field" Url="html/2da072d0-9ed0-2e99-0248-dd2b64c89cb7.htm" />
+              <HelpTOCNode Title="_shiftFunc Field" Url="html/f62a3b3b-1d5d-9252-4220-40521ba56732.htm" />
+              <HelpTOCNode Title="_sigma Field" Url="html/a8c3171e-7d22-9efd-505f-348fb001af1d.htm" />
+              <HelpTOCNode Title="_t Field" Url="html/66930f4c-9b7d-95a2-c001-fdc5d0a6bd78.htm" />
+              <HelpTOCNode Title="_x Field" Url="html/d5929912-2443-08ec-9f3d-0a1a975d4cae.htm" />
+              <HelpTOCNode Title="_y Field" Url="html/ecdfd914-bb79-9865-9e6e-136423e08e0e.htm" />
+              <HelpTOCNode Title="_yFunc Field" Url="html/a46dd4c6-360f-189e-d180-946d0314d9a3.htm" />
+              <HelpTOCNode Title="TWO_PI Field" Url="html/61bd664d-1be2-da71-aa60-8c7cdde7459c.htm" />
+            </HelpTOCNode>
+          </HelpTOCNode>
+          <HelpTOCNode Id="4594e6d3-552d-4a65-a61a-71c93408ea38" Title="NormalDist Class" Url="html/76e7ec60-fb7d-5128-4399-b0036c321b1d.htm">
+            <HelpTOCNode Title="NormalDist Constructor " Url="html/86dab026-62b8-a201-b17e-bff3d41558cc.htm" />
+            <HelpTOCNode Id="e4e868a3-9f4f-438c-9f5e-bb5bb33deeca" Title="NormalDist Methods" Url="html/5de244fc-634d-4150-986e-fb41b983982a.htm">
+              <HelpTOCNode Title="Erf Method " Url="html/3875c10e-dbf5-8c45-a7d1-0ace6933d470.htm" />
+              <HelpTOCNode Title="NextSample Method " Url="html/b082639d-7e5b-282e-c14b-21d411b626b5.htm" />
+              <HelpTOCNode Title="NormDist Method " Url="html/5352a20b-790f-3d55-ffaa-e083518de29a.htm" />
+              <HelpTOCNode Id="cedb865b-2aed-45d3-8104-36f86b17c96f" Title="Phi Method " Url="html/130ec7eb-1e94-fb39-affd-a01024825115.htm">
+                <HelpTOCNode Title="Phi Method (Double)" Url="html/1e808ad4-d190-8777-adcc-ad8963e6d5c2.htm" />
+                <HelpTOCNode Title="Phi Method (Double, Double, Double)" Url="html/7f8d3f91-b03b-42ca-5cf3-5b6cf76730be.htm" />
+              </HelpTOCNode>
+            </HelpTOCNode>
+            <HelpTOCNode Id="e3b48652-92ac-4a11-aada-47020e260e95" Title="NormalDist Fields" Url="html/5a311a4f-6b18-89ef-1b7d-58a75f072159.htm">
+              <HelpTOCNode Title="Rnd Field" Url="html/5498e4cc-280d-3df2-8240-885bdaee1758.htm" />
+              <HelpTOCNode Title="TWO_PI Field" Url="html/15a0ead9-4414-6008-a0e7-8f4b4940b20b.htm" />
+            </HelpTOCNode>
+          </HelpTOCNode>
+          <HelpTOCNode Id="45ab3ccf-f835-42a2-a547-efe10f87a0da" Title="SimulatedAnnealing(T) Class" Url="html/a8952aaf-9516-2525-130a-06e0b5cf9d87.htm">
+            <HelpTOCNode Id="317b2b3d-bb6e-4132-95f0-827f55d2a50e" Title="SimulatedAnnealing(T) Constructor " Url="html/e436dce9-129a-d2ef-97f3-960901e0cf21.htm">
+              <HelpTOCNode Title="SimulatedAnnealing(T) Constructor (IEnumerable(T), IReadOnlyCollection(String), IReadOnlyCollection(ValueTuple`2(Double, Double)), Func(T, Double), Double, Int64, Int32, Boolean)" Url="html/1baa0bee-219c-4bbb-f46b-230f503f2ec6.htm" />
+              <HelpTOCNode Title="SimulatedAnnealing(T) Constructor (Object[], IReadOnlyCollection(String), IReadOnlyCollection(ValueTuple`2(Double, Double)), Func(T, Double), Int32, Double, Int64, Int32, Boolean)" Url="html/ba644f51-44cb-aaf7-29e1-245c9fadd566.htm" />
+            </HelpTOCNode>
+            <HelpTOCNode Id="241d82f4-3624-458f-b3be-59076420604d" Title="SimulatedAnnealing(T) Methods" Url="html/b5c30e42-d147-64ac-6b2a-a27ddb45e64e.htm">
+              <HelpTOCNode Title="Intial Method " Url="html/08f383e7-5eeb-0a45-ce53-533301ab4743.htm" />
+              <HelpTOCNode Title="Run Method " Url="html/a5195f88-2fb8-37b5-5745-a5838edbb987.htm" />
+              <HelpTOCNode Title="Trace Method " Url="html/f05284a2-e8cc-7e89-d0d6-8048fd638def.htm" />
+            </HelpTOCNode>
+            <HelpTOCNode Id="b4491835-e661-4a81-9212-3c3df520a2b2" Title="SimulatedAnnealing(T) Fields" Url="html/e7cbccfd-68ab-a6f5-1734-46ac1f5e2a39.htm">
+              <HelpTOCNode Title="_workers Field" Url="html/3c0d93d3-47c7-ff5a-16d8-b906e9766b9d.htm" />
+            </HelpTOCNode>
+          </HelpTOCNode>
+          <HelpTOCNode Id="92134758-6d2a-4524-85ed-9b7e219c9b4f" Title="SimulatedAnnealing(T).SimulatedAnnealingWorker Class" Url="html/3f2b353b-f3e0-8cdf-a932-c8c43216d71d.htm">
+            <HelpTOCNode Title="SimulatedAnnealing(T).SimulatedAnnealingWorker Constructor " Url="html/dbfa99e5-04d1-bbec-165a-e1b982038c59.htm" />
+            <HelpTOCNode Id="47a5bd9a-23d8-43d5-832b-67d3fb93c657" Title="SimulatedAnnealingWorker Properties" Url="html/647fcfe1-b5c8-58a9-fa89-5dd5381a14fc.htm">
+              <HelpTOCNode Title="Answer Property " Url="html/7a39eb25-f19b-dfeb-4522-370845cc9b0d.htm" />
+              <HelpTOCNode Title="Trace Property " Url="html/760992af-5032-eed1-199c-02a5a2e6aa96.htm" />
+            </HelpTOCNode>
+            <HelpTOCNode Id="d5ce0b3b-5fc1-4a55-89dd-f64bfc73c3aa" Title="SimulatedAnnealingWorker Methods" Url="html/37071088-186d-fe54-26dd-ce0349a1f9cf.htm">
+              <HelpTOCNode Title="Norm Method " Url="html/27c1401f-ea0a-3ccb-4832-d17bbaea754e.htm" />
+              <HelpTOCNode Title="Run Method " Url="html/a87ad083-d35a-a049-d7b7-994680ca991a.htm" />
+              <HelpTOCNode Title="ToString Method " Url="html/d5966486-6a0c-c3cf-e942-5a9987dd0565.htm" />
+            </HelpTOCNode>
+            <HelpTOCNode Id="be8fb457-c69b-499c-b8d5-aede9d859124" Title="SimulatedAnnealingWorker Fields" Url="html/9119ef8b-dc70-afde-8fb6-18fc940bd783.htm">
+              <HelpTOCNode Title="_cooliter Field" Url="html/f2355d68-4eff-7c5d-9b86-85291d5cd121.htm" />
+              <HelpTOCNode Title="_debug Field" Url="html/802a6fc3-745c-0f16-befe-a63daf16c9e4.htm" />
+              <HelpTOCNode Title="_dim Field" Url="html/74b282f8-191f-6791-0b36-3dcd0b5f1d7e.htm" />
+              <HelpTOCNode Title="_end Field" Url="html/e832c191-7239-5cdd-f521-496ebd01319a.htm" />
+              <HelpTOCNode Title="_id Field" Url="html/38f369a3-325a-0b07-e010-99701e25fcb4.htm" />
+              <HelpTOCNode Title="_itr Field" Url="html/af2acf8c-c903-d675-bc9c-ed5ffefc2dfd.htm" />
+              <HelpTOCNode Title="_lower Field" Url="html/2a383ff5-3722-2098-c516-ddad2b1fae69.htm" />
+              <HelpTOCNode Title="_objective Field" Url="html/1174fc1b-f634-8753-01cf-296a83a17f36.htm" />
+              <HelpTOCNode Title="_r Field" Url="html/9ece43f2-9ea4-081b-92c2-a1ecfe89e638.htm" />
+              <HelpTOCNode Title="_setters Field" Url="html/f62ca5e8-9b7b-181c-a2ac-00fd19a89da8.htm" />
+              <HelpTOCNode Title="_temp Field" Url="html/f1c43dc0-f770-0a35-0caa-9e8f969de210.htm" />
+              <HelpTOCNode Title="_upper Field" Url="html/2e6f63a9-1e51-5fef-1e2f-0dc0f72dd51c.htm" />
+              <HelpTOCNode Title="_x Field" Url="html/720c76fe-dfbc-6a57-5dd0-67153e6ec1f1.htm" />
+              <HelpTOCNode Title="_y Field" Url="html/85464a9c-2e1b-26fc-c314-c488b7b5bf8a.htm" />
+              <HelpTOCNode Title="TWO_PI Field" Url="html/c8c7047d-474c-a0a8-adb4-917dba4b3c7e.htm" />
+            </HelpTOCNode>
+          </HelpTOCNode>
+        </HelpTOCNode>
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="ebbc0b3c-6af7-447e-8f59-bb7ecf7af474" Title="MathFuncUnitTestProject" Url="html/11309766-0215-2b71-0ba0-f84fd681904b.htm">
+      <HelpTOCNode Id="c8fbbc9c-c331-4731-9c9d-9b9e78bffefa" Title="HelperTest Class" Url="html/67268c71-5c02-67f5-2ef7-4bb0910df091.htm">
+        <HelpTOCNode Title="HelperTest Constructor " Url="html/11185684-e7c1-382a-696d-1bb37f2121eb.htm" />
+        <HelpTOCNode Id="9ca8fa1c-66bc-456d-97f8-92b3b95f5455" Title="HelperTest Methods" Url="html/ea13cc5b-1518-478e-d551-b62344598365.htm">
+          <HelpTOCNode Title="TestNormDistSample Method " Url="html/9187bbf3-e001-1423-8828-87210a71f2b5.htm" />
+        </HelpTOCNode>
+      </HelpTOCNode>
+    </HelpTOCNode>
+  </HelpTOCNode>
+</HelpTOC>
