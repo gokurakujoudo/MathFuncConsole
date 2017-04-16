@@ -28,12 +28,12 @@
     </TransformComponentArguments>
     <SaveComponentCacheCapacity>100</SaveComponentCacheCapacity>
     <BuildAssemblerVerbosity>OnlyWarningsAndErrors</BuildAssemblerVerbosity>
-    <HelpFileFormat>Website</HelpFileFormat>
+    <HelpFileFormat>OpenXml</HelpFileFormat>
     <IndentHtml>False</IndentHtml>
     <KeepLogFile>True</KeepLogFile>
     <DisableCodeBlockComponent>False</DisableCodeBlockComponent>
     <CleanIntermediates>True</CleanIntermediates>
-    <VisibleItems>Attributes, ExplicitInterfaceImplementations, InheritedMembers, Internals, Privates, PrivateFields, Protected, SealedProtected, ProtectedInternalAsProtected</VisibleItems>
+    <VisibleItems>Attributes, ExplicitInterfaceImplementations, InheritedMembers, Protected, SealedProtected, ProtectedInternalAsProtected</VisibleItems>
     <HelpFileVersion>0.0.0.1</HelpFileVersion>
     <MaximumGroupParts>2</MaximumGroupParts>
     <NamespaceGrouping>True</NamespaceGrouping>
@@ -41,7 +41,7 @@
     <SdkLinkTarget>Blank</SdkLinkTarget>
     <RootNamespaceTitle>MathFunc</RootNamespaceTitle>
     <RootNamespaceContainer>True</RootNamespaceContainer>
-    <PresentationStyle>VS2013</PresentationStyle>
+    <PresentationStyle>OpenXML</PresentationStyle>
     <Preliminary>False</Preliminary>
     <NamingMethod>Guid</NamingMethod>
     <HelpTitle>Documentation for MathFuncConsole</HelpTitle>
@@ -54,6 +54,13 @@
       <DocumentationSource sourceFile="..\MathFuncConsole.sln" xmlns="" />
     </DocumentationSources>
     <MissingTags>AutoDocumentCtors</MissingTags>
+    <NamespaceSummaries>
+      <NamespaceSummaryItem name="MathFuncUnitTestProject" isDocumented="False" />
+<NamespaceSummaryItem name="MathFuncConsole" isDocumented="False" />
+<NamespaceSummaryItem name="MathFuncConsole.MathObjects (Group)" isGroup="True" isDocumented="True" />
+<NamespaceSummaryItem name="MathFuncConsole.MathObjects" isDocumented="True" /></NamespaceSummaries>
+    <PlugInConfigurations />
+    <ProjectSummary>MathFuncConsole is currently a personal building-wheel project to implement fundamental models and concepts in quantitative finance world as well as basic algorithms and data structures in computer science scope. MathFuncConsole provides powerful computation methods and simple syntax for you to abstract and evaluate a quantitative finance situation. This project is written in C# 7 in Visual Studio 2017 without any 3rd-party package. It is a wheel project for practicing and learning C# and its quantitative finance applications.</ProjectSummary>
   </PropertyGroup>
   <!-- There are no properties for these groups.  AnyCPU needs to appear in order for Visual Studio to perform
 			 the build.  The others are optional common platform types that may appear. -->
@@ -75,14 +82,8 @@
   </PropertyGroup>
   <ItemGroup>
     <Folder Include="Content" />
-    <Folder Include="Content\VersionHistory" />
     <Folder Include="icons" />
     <Folder Include="media" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Content\VersionHistory\v1.0.0.0.aml" />
-    <None Include="Content\VersionHistory\VersionHistory.aml" />
-    <None Include="Content\Welcome.aml" />
   </ItemGroup>
   <ItemGroup>
     <ContentLayout Include="ContentLayout.content" />

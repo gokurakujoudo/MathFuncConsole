@@ -35,7 +35,7 @@ namespace MathFuncConsole.MathObjects.Applications {
                 this.Price = Input(price);
                 this.Sigma = () => {
                     var t = new GenericOption(string.Empty, this.Pv1, this.Pv2, this.Maturity, sigma: 0);
-                    return Bisection.Search(t.RemoteLink(xName: "Sigma", yName: "Price"), this.Price(), (0, 1));
+                    return Bisection.Search(updateFunc: t.RemoteLink(xName: "Sigma", yName: "Price"), target: this.Price(), range: (0, 1));
                 };
             }
             else throw new ArgumentNullException(nameof(sigma), "sigma and price can't be both null");

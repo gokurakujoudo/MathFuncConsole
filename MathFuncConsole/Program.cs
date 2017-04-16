@@ -15,6 +15,12 @@ namespace MathFuncConsole {
             Demo_HW();
             //Demo_HW_SaaSolver();
 
+            var t = new GenericOption(string.Empty, pv1: 100, pv2: 120, maturity: 1, sigma: 0);
+            Func<double> getter = t.RemoteGetter(nameof(t.Price));
+            Action<double> setter = t.RemoteSetter("Sigma");
+            Func<double, double> link = t.RemoteLink(xName: "Sigma", yName: "Price");
+
+
             Console.WriteLine();
 
             Console.Read();

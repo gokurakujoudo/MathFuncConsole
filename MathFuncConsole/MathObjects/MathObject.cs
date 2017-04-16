@@ -16,15 +16,13 @@ namespace MathFuncConsole.MathObjects {
         /// <summary>
         /// Name of this <see cref="MathObject"/>, only used in print-out.
         /// </summary>
-        public string Name { get; }
+        protected string Name { get; }
 
         /// <summary>
         /// Initial new instance of <see cref="MathObject"/>. You shouldn't call this method directly but to inherit it.
         /// </summary>
         /// <param name="name">Name of the <see cref="MathObject"/> for print-out</param>
-        public MathObject(string name) {
-            this.Name = name;
-        }
+        protected MathObject(string name) => this.Name = name;
 
         /// <summary>
         /// Universal setter method without reference to the instance. To set value, input must be <see cref="double"/>.
@@ -59,7 +57,7 @@ namespace MathFuncConsole.MathObjects {
         /// <param name="yName">Name of the target property that act as dependent variable</param>
         /// <param name="defaultX">If set, after every calculations, x will be reset to this value.</param>
         /// <returns>A function of mapping independent variable to dependent variable</returns>
-        public Func<double, double> RemoteLink(string xName, string yName, double? defaultX = null) => newX => {
+        public virtual Func<double, double> RemoteLink(string xName, string yName, double? defaultX = null) => newX => {
             var xProperty = this.GetType().GetProperty(xName);
             if (xProperty == null) throw new TargetInvocationException($"property {xName} cannot be found", null);
             xProperty.SetValue(this, newX.Wrap());
