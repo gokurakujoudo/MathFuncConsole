@@ -15,10 +15,10 @@ namespace MathFuncConsole {
             Demo_HW();
             //Demo_HW_SaaSolver();
 
-            var t = new GenericOption(string.Empty, pv1: 100, pv2: 120, maturity: 1, sigma: 0);
-            Func<double> getter = t.RemoteGetter(nameof(t.Price));
-            Action<double> setter = t.RemoteSetter("Sigma");
-            Func<double, double> link = t.RemoteLink(xName: "Sigma", yName: "Price");
+            //var t = new GenericOption(string.Empty, pv1: 100, pv2: 120, maturity: 1, sigma: 0);
+            //Func<double> getter = t.RemoteGetter(nameof(t.Price));
+            //Action<double> setter = t.RemoteSetter("Sigma");
+            //Func<double, double> link = t.RemoteLink(xName: "Sigma", yName: "Price");
 
 
             Console.WriteLine();
@@ -43,13 +43,22 @@ namespace MathFuncConsole {
                 0.0203891, 0.0212078, 0.0219844, 0.0217523, 0.0223657, 0.0229775, 0.0235635, 0.0231886, 0.0236636,
                 0.0241312, 0.0245827
             };
-            var hw = new HullWhiteModel("hw1", .5, .05, marketT, marketP, marketF);
 
-            for (var i = 0; i < marketT.Length; i++) {
-                var t = marketT[i];
-                var p = hw.HW_ZBPrice_CF(0, t, marketF[0]);
-                Console.WriteLine($"{t}: {p} <- {marketP[i]}");
+            var hw = new HullWhiteModel("hw1", .00883, .01, marketT, marketP, marketF);
+
+                var zb = hw.HW_ZBPrice_CF(0, 2, marketF[0]);
+                var zb2 = hw.HW_ZBPrice_SM(0, 2, marketF[0]);
+                Console.WriteLine($"T = 2: c{zb:F10} <> s{zb2:F10} <- {hw.MarketP(2):F10}");
+
+
+            for (var i = 0.94; i < 0.98; i += 0.002)
+            {
+                var p1 = hw.HW_ZBPut_CF(0, 1, 2, i, marketF[0]);
+                var p2 = hw.HW_ZBPut_SM_Q(0, 1, 2, i, marketF[0], n: 30000, m: 360);
+                var p3 = hw.HW_ZBPut_SM_T(0, 1, 2, i, marketF[0], n: 30000);
+                Console.WriteLine($"x = {i:F3}: c{p1:F10} <> q{p2:F10} <> t{p3:F10}");
             }
+
         }
 
         private static void Demo_HW_SaaSolver() {

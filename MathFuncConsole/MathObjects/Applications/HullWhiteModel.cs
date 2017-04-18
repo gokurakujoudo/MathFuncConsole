@@ -52,18 +52,18 @@ namespace MathFuncConsole.MathObjects.Applications {
                                           1 / (2 * a) * Exp(-2 * a * (ty - tx)) - 3 / (2 * a));
         }
 
-        public double HW_ZBPrice_SM(double t0, double t1, double rT0, int n = 200) {
+        public double HW_ZBPrice_SM(double t0, double t1, double rT0, int n = 500000) {
             var bT0T1 = AB(t0, t1).bt0t1;
             var miu = bT0T1 * (rT0 - Alpha(t0)) + Log(MarketP(t0) / MarketP(t1)) + (V(0, t1) - V(0, t0)) / 2;
             var var = V(t0, t1);
-            var samples = NormalDist.NextSamples(-miu, Sqrt(var), n);
-            var expectation = samples.Average(sample => Exp(sample));
+            var samples = NormalDist.NextSamples(miu, Sqrt(var), n);
+            var expectation = samples.Average(sample => Exp(-sample));
             return expectation;
         }
 
-        private double HW_ZBPut_CF(double t0, double t1, double t2, double x, double rT0) {
+        public double HW_ZBPut_CF(double t0, double t1, double t2, double x, double rT0) {
             // 3.41
-            var(_, bts) = AB(t0, t2);
+            var(_, bts) = AB(t1, t2);
             var pT0T1 = HW_ZBPrice_CF(t0, t1, rT0);
             var pT0T2 = HW_ZBPrice_CF(t0, t2, rT0);
             var a = this.A();
@@ -73,6 +73,61 @@ namespace MathFuncConsole.MathObjects.Applications {
             return price;
         }
 
+        public double HW_ZBPut_SM_Q(double t0, double t1, double t2, double x, double rT0, int m = 100, int n = 500) {
+            var a = this.A();
+            var sigma = this.Sigma();
+
+            var dt = (t1 - t0) / m;
+            var alpha0 = MarketF(0);
+
+            var samples = new double[n];
+            var ps = new double[n];
+            var rt = new double[n][];
+            for (var i = 0; i < n; i++) {
+                rt[i] = new double[m];
+                var laji = 0D;
+                var t = t0;
+                for (var j = 0; j < m; j++) {
+                    t = t + dt;
+                    laji += Exp(a * t) * NormalDist.NextSample(0, Sqrt(dt));
+                    rt[i][j] = rT0 * Exp(-a * t) + Alpha(t) - alpha0 * Exp(-a * t) + sigma * Exp(-a * t) * laji;
+                }
+                var discount = Exp(-rt[i].Sum() * dt);
+                var rt1 = rt[i][m - 1];
+                var pT1T2 = HW_ZBPrice_CF(t1, t2, rt1);
+                ps[i] = pT1T2;
+                samples[i] = discount * Max(x - pT1T2, 0);
+            }
+            return samples.Average();
+        }
+
+        internal double Mt(double s, double t, double T) {
+            var a = this.A();
+            var sigma = this.Sigma();
+            return sigma.Sq() / a.Sq() * (1 - Exp(-a * (t - s))) -
+                   sigma.Sq() / (2 * a.Sq()) * (Exp(-a * (T - t)) - Exp(-a * (T + t - 2 * s)));
+
+        }
+
+        public double HW_ZBPut_SM_T(double t0, double t1, double t2, double x, double rT0, int n = 500) {
+            // 3.37
+            var a = this.A();
+            var sigma = this.Sigma();
+
+            var miu = rT0 * Exp(-a * (t1 - t0)) + Alpha(t1) - Alpha(t0) * Exp(-a * (t1 - t0));
+            //var miu = xs * Exp(-a * (t1 - t0)) - Mt(t0, t1, t2) + Alpha(t1);
+            var var = sigma.Sq() / (2 * a) * (1 - Exp(-2 * a * (t1 - t0)));
+            var rt1 = NormalDist.NextSamples(miu, Sqrt(var), n);
+
+            var pT0T1 = MarketP(t1);//HW_ZBPrice_CF( t0, t1, rT0);
+
+            var samples = new double[n];
+            for (var i = 0; i < n; i++) 
+                samples[i] = HW_ZBPrice_CF(t1, t2, rt1[i]);
+
+            var expectation = samples.Average(sample => Max(x - sample, 0));
+            return pT0T1 * expectation;
+        }
 
 
         private double HW_Caplets(double t0, double t1, double t2, double x, double n, double rT0) {
@@ -136,7 +191,7 @@ namespace MathFuncConsole.MathObjects.Applications {
         private readonly Dictionary<double, double> _mf = new Dictionary<double, double>();
         private readonly Dictionary<double, double> _mp = new Dictionary<double, double>();
 
-        private double MarketF(double t) {
+        public double MarketF(double t) {
             if (_mf.ContainsKey(t))
                 return _mf[t];
             var marketF = Interpolation.Linear(t, _marketT, _marketF);
@@ -145,7 +200,7 @@ namespace MathFuncConsole.MathObjects.Applications {
         }
 
 
-        private double MarketP(double t) {
+        public double MarketP(double t) {
             if (_mp.ContainsKey(t))
                 return _mp[t];
             var marketP = Interpolation.Linear(t, _marketT, _marketP);

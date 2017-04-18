@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 
 namespace MathFuncConsole.MathObjects.Helper {
     /// <summary>
@@ -55,6 +56,7 @@ namespace MathFuncConsole.MathObjects.Helper {
         /// <param name="sigma">Standard deviation of the normal distribution</param>
         /// <returns></returns>
         public static double NextSample(double mu = 0, double sigma = 1) {
+            if (sigma == 0) return mu;
             var u1 = 1 - Rnd.NextDouble();
             var u2 = Rnd.NextDouble();
             var r = Math.Sqrt(-2 * Math.Log(u1));
@@ -71,16 +73,20 @@ namespace MathFuncConsole.MathObjects.Helper {
         /// <param name="n">Number of samples</param>
         /// <returns></returns>
         public static double[] NextSamples(double mu = 0, double sigma = 1, int n = 100) {
+            if (sigma == 0)
+                return new[] { mu };
             var samples = new double[n];
             for (var i = 0; i < n; i += 2) {
                 var u1 = 1 - Rnd.NextDouble();
                 var u2 = Rnd.NextDouble();
                 var r = Math.Sqrt(-2 * Math.Log(u1));
                 var t = u2 * TWO_PI;
-                samples[i] = r * Math.Cos(t);
+                samples[i] = r * Math.Cos(t) * sigma + mu;
                 if (i + 1 < n)
-                    samples[i + 1] = r * Math.Sin(t);
+                    samples[i + 1] = r * Math.Sin(t) * sigma + mu;
             }
+            var mean = samples.Average();
+
             return samples;
         }
     }
