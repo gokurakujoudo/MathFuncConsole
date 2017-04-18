@@ -57,5 +57,7 @@ namespace MathFuncConsole.MathObjects.Helper {
         /// <returns></returns>
         public static string ToStr(this IEnumerable<(double[] x, double y)> trace) => string.Join(
             "\r\n", trace.Select(t => $"{t.x.ToStr()}, {t.y:F6}"));
+
+        internal static double Sq(this double num, double x = 2) => Math.Pow(num, x);
     }
 }
