@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using MathFuncConsole.MathObjects;
 using MathFuncConsole.MathObjects.Applications;
 using MathFuncConsole.MathObjects.Helper;
 
@@ -12,14 +13,31 @@ namespace MathFuncConsole {
             //Demo_ImpliedVolitity();
             //Demo_SaaImpliedVolitity();
             //Demo_EquationSetSaaSolver();
-            Demo_HW();
+            //Demo_HW();
             //Demo_HW_SaaSolver();
 
-            //var t = new GenericOption(string.Empty, pv1: 100, pv2: 120, maturity: 1, sigma: 0);
-            //Func<double> getter = t.RemoteGetter(nameof(t.Price));
-            //Action<double> setter = t.RemoteSetter("Sigma");
-            //Func<double, double> link = t.RemoteLink(xName: "Sigma", yName: "Price");
+            var marketT = new[] {
+                0, 0.255555556, 0.511111111, 0.761111111, 1.013888889, 1.269444444, 1.530555556, 1.775, 2.027777778,
+                2.291666667, 2.541666667, 2.797222222, 3.047222222, 3.302777778, 3.555555556, 3.805555556, 4.058333333,
+                4.313888889, 4.569444444, 4.819444444
+            };
 
+            var marketF = new[] {
+                .0115761, 0.0134633, 0.0145677, 0.015404, 0.016344, 0.0173619, 0.0182408, 0.0188542, 0.0195574,
+                0.0203891, 0.0212078, 0.0219844, 0.0217523, 0.0223657, 0.0229775, 0.0235635, 0.0231886, 0.0236636,
+                0.0241312, 0.0245827
+            };
+
+            var cur1 = new SplineCurve(marketT, marketF);
+
+            var k = 1000;
+            var maxx = marketT[marketT.Length - 1];
+            var newx = Enumerable.Range(0, k).Select(x => x * maxx / k).ToArray();
+
+            var newy = Interpolation.CubicSpline(cur1.Points(), newx);
+
+            var str = string.Join("#", Enumerable.Range(0, k).Select(i => $"{i:D4},{newx[i]:F6},{newy[i]:F6}"));
+            var str2 = string.Join("#", Enumerable.Range(0, marketT.Length).Select(i => $"{i:D4},{marketT[i]:F6},{marketF[i]:F6}"));
 
             Console.WriteLine();
 
@@ -48,7 +66,7 @@ namespace MathFuncConsole {
 
                 var zb = hw.HW_ZBPrice_CF(0, 2, marketF[0]);
                 var zb2 = hw.HW_ZBPrice_SM(0, 2, marketF[0]);
-                Console.WriteLine($"T = 2: c{zb:F10} <> s{zb2:F10} <- {hw.MarketP(2):F10}");
+                Console.WriteLine($"T = 2: c{zb:F10} <> s{zb2:F10} <- m{hw.MarketP(2):F10}");
 
 
             for (var i = 0.94; i < 0.98; i += 0.002)

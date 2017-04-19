@@ -58,6 +58,7 @@
     <Compile Include="MathObjects\Applications\HullWhiteModel.cs" />
     <Compile Include="MathObjects\Helper\Bisection.cs" />
     <Compile Include="MathObjects\Helper\Interpolation.cs" />
+    <Compile Include="MathObjects\Helper\LeastSquares.cs" />
     <Compile Include="MathObjects\Helper\MonteCarloSimulation.cs" />
     <Compile Include="MathObjects\Helper\SimulatedAnnealing.cs" />
     <Compile Include="MathObjects\Applications\EquationSet.cs" />
@@ -69,6 +70,7 @@
     <Compile Include="MathObjects\Applications\Option.cs" />
     <Compile Include="MathObjects\Applications\Yield.cs" />
     <Compile Include="MathObjects\Helper\MathClassHelper.cs" />
+    <Compile Include="MathObjects\SplineCurve.cs" />
     <Compile Include="MathObjects\MathObject.cs" />
     <Compile Include="MathObjects\Helper\NormalDist.cs" />
     <Compile Include="Program.cs" />

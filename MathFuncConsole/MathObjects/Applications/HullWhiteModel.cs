@@ -28,8 +28,8 @@ namespace MathFuncConsole.MathObjects.Applications {
             var a = this.A();
             var bT0T1 = (1 - Exp(-a * (t1 - t0))) / a;
             var aT0T1 = pmT1 / pmT0 * Exp(bT0T1 * fmT0 -
-                                               Pow(this.Sigma(), 2) / (4 * a) * (1 - Exp(-2 * a * t0)) *
-                                               Pow(bT0T1, 2));
+                                          Pow(this.Sigma(), 2) / (4 * a) * (1 - Exp(-2 * a * t0)) *
+                                          Pow(bT0T1, 2));
             return (aT0T1, bT0T1);
         }
 
@@ -63,7 +63,7 @@ namespace MathFuncConsole.MathObjects.Applications {
 
         public double HW_ZBPut_CF(double t0, double t1, double t2, double x, double rT0) {
             // 3.41
-            var(_, bts) = AB(t1, t2);
+            var (_, bts) = AB(t1, t2);
             var pT0T1 = HW_ZBPrice_CF(t0, t1, rT0);
             var pT0T2 = HW_ZBPrice_CF(t0, t2, rT0);
             var a = this.A();
@@ -101,28 +101,19 @@ namespace MathFuncConsole.MathObjects.Applications {
             return samples.Average();
         }
 
-        internal double Mt(double s, double t, double T) {
-            var a = this.A();
-            var sigma = this.Sigma();
-            return sigma.Sq() / a.Sq() * (1 - Exp(-a * (t - s))) -
-                   sigma.Sq() / (2 * a.Sq()) * (Exp(-a * (T - t)) - Exp(-a * (T + t - 2 * s)));
-
-        }
-
         public double HW_ZBPut_SM_T(double t0, double t1, double t2, double x, double rT0, int n = 500) {
             // 3.37
             var a = this.A();
             var sigma = this.Sigma();
 
             var miu = rT0 * Exp(-a * (t1 - t0)) + Alpha(t1) - Alpha(t0) * Exp(-a * (t1 - t0));
-            //var miu = xs * Exp(-a * (t1 - t0)) - Mt(t0, t1, t2) + Alpha(t1);
             var var = sigma.Sq() / (2 * a) * (1 - Exp(-2 * a * (t1 - t0)));
             var rt1 = NormalDist.NextSamples(miu, Sqrt(var), n);
 
-            var pT0T1 = MarketP(t1);//HW_ZBPrice_CF( t0, t1, rT0);
+            var pT0T1 = MarketP(t1); //HW_ZBPrice_CF( t0, t1, rT0);
 
             var samples = new double[n];
-            for (var i = 0; i < n; i++) 
+            for (var i = 0; i < n; i++)
                 samples[i] = HW_ZBPrice_CF(t1, t2, rt1[i]);
 
             var expectation = samples.Average(sample => Max(x - sample, 0));
@@ -175,8 +166,8 @@ namespace MathFuncConsole.MathObjects.Applications {
         public double HW_CAP_CM(double t0, double tAlpha, double[] taoArray, double x, double n, int num) {
             // 3.37
             Func<double, double> alphaFunc = t => MarketF(t) +
-                                                    Pow(this.Sigma(), 2) / (2 * Pow(this.A(), 2)) *
-                                                    Pow(1 - Exp(-this.A() * t), 2);
+                                                  Pow(this.Sigma(), 2) / (2 * Pow(this.A(), 2)) *
+                                                  Pow(1 - Exp(-this.A() * t), 2);
             var mu = MarketF(0) * Exp(-this.A() * t0) + alphaFunc(t0) -
                      alphaFunc(0) * Exp(-this.A() * t0);
             var sigma = Pow(this.Sigma(), 2) / (2 * Pow(this.A(), 2)) *
@@ -196,6 +187,10 @@ namespace MathFuncConsole.MathObjects.Applications {
                 return _mf[t];
             var marketF = Interpolation.Linear(t, _marketT, _marketF);
             _mf[t] = marketF;
+
+            var delta = 1E-3;
+            var mf = -(Log(MarketP(t + delta)) - Log(MarketP(t))) / delta;
+
             return marketF;
         }
 
