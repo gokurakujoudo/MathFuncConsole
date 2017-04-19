@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Linq;
 
 namespace MathFuncConsole.MathObjects.Helper {
     internal static class LeastSquares {
+
         ///<summary>
         ///Implementation least squares method
         ///</summary>
@@ -9,91 +11,106 @@ namespace MathFuncConsole.MathObjects.Helper {
         ///<param name="ys">Known ys</param>
         ///<param name="dimension">Highest dimension of x</param>
         ///<returns>[a0,a1,...,a-dim]</returns>
-        public static double[] MultiLine(double[] xs, double[] ys, int dimension)
-        {
-            var length = xs.Length;
-            var n = dimension + 1; 
-            var guass = new double[n, n + 1]; 
-            for (var i = 0; i < n; i++) {
-                int j;
-                for (j = 0; j < n; j++) 
-                    guass[i, j] = SumArr(xs, j + i, length);
-                guass[i, j] = SumArr(xs, i, ys, 1, length);
+        public static double[] Generate(double[] xs, double[] ys, int dimension) {
+            if (xs == null || ys == null || xs.Length <= 1 || xs.Length != ys.Length
+                || xs.Length < dimension || dimension < 2) {
+                throw new ArgumentException("Invalid match of length");
             }
-            return ComputGauss(guass, n);
-        }
-
-        /// <summary>
-        /// Sum of element to the power of n
-        /// </summary>
-        /// <param name="arr">Input array</param>
-        /// <param name="n">Power</param>
-        /// <param name="length">Length of the array</param>
-        /// <returns></returns>
-        private static double SumArr(double[] arr, int n, int length) 
-        {
-            var s = 0D;
-            for (var i = 0; i < length; i++)
-                s += (arr[i] != 0 || n != 0) ? Math.Pow(arr[i], n) : 1;
-            return s;
-        }
-
-        /// <summary>
-        /// Sum of pair of elements to the power of ns
-        /// </summary>
-        /// <param name="arr1">Input array1</param>
-        /// <param name="n1">Power1</param>
-        /// <param name="arr2">Input array2</param>
-        /// <param name="n2"></param>
-        /// <param name="length">Power2</param>
-        /// <returns></returns>
-        private static double SumArr(double[] arr1, int n1, double[] arr2, int n2, int length) {
-            double s = 0;
-            for (var i = 0; i < length; i++) 
-                if ((arr1[i] != 0 || n1 != 0) && (arr2[i] != 0 || n2 != 0))
-                    s += Math.Pow(arr1[i], n1) * Math.Pow(arr2[i], n2);
-                else
-                    s += 1;
-            return s;
-        }
-
-        private static double[] ComputGauss(double[,] guass, int n) {
-            var x = new double[n];
-            for (var i = 0; i < n; i++) x[i] = 0D; 
-            for (var j = 0; j < n; j++) {
-                var  max = 0D;
-                var k = j;
-                for (var i = j; i < n; i++) 
-                    if (Math.Abs(guass[i, j]) > max) {
-                        max = guass[i, j];
-                        k = i;
-                    }
-                if (k != j) 
-                    for (var m = j; m < n + 1; m++) {
-                        var temp = guass[j, m];
-                        guass[j, m] = guass[k, m];
-                        guass[k, m] = temp;
-                    }                
-                if (0 == max) 
-                    return x;
-                for (var i = j + 1; i < n; i++) {
-                    var s = guass[i, j];
-                    for (var m = j; m < n + 1; m++) {
-                        guass[i, m] = guass[i, m] - guass[j, m] * s / (guass[j, j]);
-                    }
-                }
-            } 
-            for (var i = n - 1; i >= 0; i--) {
-                var s = 0D;
-                for (var j = i + 1; j < n; j++) {
-                    s += guass[i, j] * x[j];
-                }
-                x[i] = (guass[i, n] - s) / guass[i, i];
+            var s = new double[(dimension - 1) * 2 + 1];
+            for (var i = 0; i < s.Length; i++) {
+                foreach (var t in xs)
+                    s[i] += Math.Pow(t, i);
             }
-            return x;
-        } 
+            var b = new double[dimension];
+            for (var i = 0; i < b.Length; i++) {
+                for (var j = 0; j < xs.Length; j++)
+                    b[i] += Math.Pow(xs[j], i) * ys[j];
+            }
+            var a = new double[dimension][];
+            for (var i = 0; i < dimension; i++) {
+                a[i] = new double[dimension];
+                for (var j = 0; j < dimension; j++)
+                    a[i][j] = s[i + j];
+            }
 
+            // Now we need to calculate each coefficients of augmented matrix  
+            return CalcLinearEquation(a, b);
+        }
 
+        /* 
+         * Calculate linear equation. 
+         *  
+         * The matrix equation is like this: Ax=B 
+         *  
+         * @param a two-dimensional array 
+         *  
+         * @param b one-dimensional array 
+         *  
+         * @return x, one-dimensional array 
+         */
+        private static double[] CalcLinearEquation(double[][] a, double[] b) {
+            if (a == null || b == null || a.Length == 0 || a.Length != b.Length)
+                return null;
+            if (a.Any(x => x == null || x.Length != a.Length))
+                return null;
+            var len = a.Length - 1;
+            var result = new double[a.Length];
+            if (len == 0) {
+                result[0] = b[0] / a[0][0];
+                return result;
+            }
+            var aa = new double[len][];
+            for (var i = 0; i < len; i++)
+                aa[i] = new double[len];
+            var bb = new double[len];
+            int posx = -1, posy = -1;
+            for (var i = 0; i <= len; i++) {
+                for (var j = 0; j <= len; j++)
+                    if (a[i][j] != 0.0d) {
+                        posy = j;
+                        break;
+                    }
+                if (posy == -1) continue;
+                posx = i;
+                break;
+            }
+            if (posx == -1)
+                return null;
+            var count = 0;
+            for (var i = 0; i <= len; i++) {
+                if (i == posx)
+                    continue;
+                bb[count] = b[i] * a[posx][posy] - b[posx] * a[i][posy];
+                var count2 = 0;
+                for (var j = 0; j <= len; j++) {
+                    if (j == posy)
+                        continue;
+
+                    aa[count][count2] = a[i][j] * a[posx][posy] - a[posx][j] * a[i][posy];
+                    count2++;
+                }
+                count++;
+            }
+
+            // Calculate sub linear equation  
+            var result2 = CalcLinearEquation(aa, bb);
+
+            // After sub linear calculation, calculate the current coefficient  
+            var sum = b[posx];
+            count = 0;
+            for (var i = 0; i <= len; i++) {
+                if (i == posy)
+                    continue;
+                sum -= a[posx][i] * result2[count];
+                result[i] = result2[count];
+                count++;
+            }
+            result[posy] = sum / a[posx][posy];
+            return result;
+        }
+
+        public static double Fit(double x, double[] coefficient) =>
+            coefficient?.Select((t, i) => Math.Pow(x, i) * t).Sum() ?? 0;
 
         //
     }

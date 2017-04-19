@@ -3,7 +3,7 @@
 namespace MathFuncConsole.MathObjects.Helper {
     static class Interpolation {
 
-        public static double Linear(double x0, double[] xs, double[] ys) {
+        public static double LinearFit(double x0, double[] xs, double[] ys) {
             var lower = 0;
             var upper = xs.Length - 1;
             if (x0 < xs[lower])
@@ -25,15 +25,15 @@ namespace MathFuncConsole.MathObjects.Helper {
             }
             var (x1, y1) = (xs[lower], ys[lower]);
             var (x2, y2) = (xs[upper], ys[upper]);
-            return x1 + (x0 - x1) / (x2 - x1) * (y2 - y1);
+            return y1 + (x0 - x1) / (x2 - x1) * (y2 - y1);
         }
 
-        public static double Linear(double x0, (double x, double y)[] ordered) {
+        public static double LinearFit(double x0, (double x, double y)[] ordered) {
             var lower = 0;
             var upper = ordered.Length - 1;
-            if (x0 < ordered[lower].x) 
+            if (x0 < ordered[lower].x)
                 upper = 1; //smaller
-            else if (x0 > ordered[upper].x) 
+            else if (x0 > ordered[upper].x)
                 lower = upper - 1; //larger
             else {
                 var mid = (lower + upper) / 2;
@@ -50,11 +50,10 @@ namespace MathFuncConsole.MathObjects.Helper {
             }
             var (x1, y1) = ordered[lower];
             var (x2, y2) = ordered[upper];
-            return x1 + (x0 - x1) / (x2 - x1) * (y2 - y1);
+            return y1 + (x0 - x1) / (x2 - x1) * (y2 - y1);
         }
 
-        public static double[] CubicSpline((double x, double y)[] points, double[] xs)
-        {
+        public static double[] CubicSpline((double x, double y)[] points, double[] xs) {
             var n = points.Length;
             var h = new double[n];
             var f = new double[n];
@@ -62,14 +61,12 @@ namespace MathFuncConsole.MathObjects.Helper {
             var v = new double[n];
             var g = new double[n];
 
-            for (var i = 0; i < n - 1; i++)
-            {
+            for (var i = 0; i < n - 1; i++) {
                 h[i] = points[i + 1].x - points[i].x;
                 f[i] = (points[i + 1].y - points[i].y) / h[i];
             }
 
-            for (var i = 1; i < n - 1; i++)
-            {
+            for (var i = 1; i < n - 1; i++) {
                 l[i] = h[i] / (h[i - 1] + h[i]);
                 v[i] = h[i - 1] / (h[i - 1] + h[i]);
                 g[i] = 3 * (l[i] * f[i - 1] + v[i] * f[i]);
@@ -93,30 +90,29 @@ namespace MathFuncConsole.MathObjects.Helper {
             m[n - 1] = fn;
             var xlength = xs.Length;
             var insertRes = new double[xlength];
-            for (var i = 0; i < xlength; i++)
-            {
+            for (var i = 0; i < xlength; i++) {
                 int j;
                 for (j = 0; j < n; j++)
                     if (xs[i] < points[j].x)
                         break;
                 j -= 1;
-                if (j == -1 || j == points.Length - 1)
-                {
+                if (j == -1 || j == points.Length - 1) {
                     if (j == -1)
-                        throw new Exception("Out of upper bound");
+                        throw new Exception("Out of lower bound");
                     if (j == points.Length - 1 && xs[i] == points[j].x)
                         insertRes[i] = points[j].y;
                     else
-                        throw new Exception("Out of lower bound");
+                        throw new Exception("Out of upper bound");
                 }
-                else
-                {
-                    var p1 = ((xs[i] - points[j + 1].x) / (points[j].x - points[j + 1].x)).Sq();
-                    var p2 = (xs[i] - points[j].x) / (points[j + 1].x - points[j].x).Sq();
+                else {
+                    var p1 = (xs[i] - points[j + 1].x) / (points[j].x - points[j + 1].x);
+                    p1 = p1 * p1;
+                    var p2 = (xs[i] - points[j].x) / (points[j + 1].x - points[j].x);
+                    p2 = p2 * p2;
                     var p3 = p1 * (1 + 2 * (xs[i] - points[j].x) / (points[j + 1].x - points[j].x)) * points[j].y + p2 *
                              (1 + 2 * (xs[i] - points[j + 1].x) / (points[j].x - points[j + 1].x)) * points[j + 1].y;
                     var p4 = p1 * (xs[i] - points[j].x) * m[j] + p2 * (xs[i] - points[j + 1].x) * m[j + 1];
-                    p4 += p3;
+                    p4 = p4 + p3;
                     insertRes[i] = p4;
                 }
 
@@ -124,5 +120,7 @@ namespace MathFuncConsole.MathObjects.Helper {
             return insertRes;
         }
 
+        public static double[] CubicSplineFit((double x, double y)[] points, double xs) =>
+            CubicSpline(points, new[] {xs});
     }
 }

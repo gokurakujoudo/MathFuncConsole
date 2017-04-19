@@ -51,6 +51,15 @@ namespace MathFuncConsole.MathObjects.Helper {
             $"({string.Join(join, list.Select(s => $"{s:F6}"))})";
 
         /// <summary>
+        /// Return string of value tuple
+        /// </summary>
+        /// <param name="tuple">value tuple</param>
+        /// <param name="join">Separator between numbers</param>
+        /// <returns></returns>
+        public static string ToStr(this (double x, double y) tuple, string join = ", ") =>
+            $"{tuple.x:F6}{join}{tuple.y:F6}";
+
+        /// <summary>
         /// Return string of a list of xs and y
         /// </summary>
         /// <param name="trace">List of xs and y</param>

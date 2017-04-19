@@ -70,7 +70,7 @@
     <Compile Include="MathObjects\Applications\Option.cs" />
     <Compile Include="MathObjects\Applications\Yield.cs" />
     <Compile Include="MathObjects\Helper\MathClassHelper.cs" />
-    <Compile Include="MathObjects\SplineCurve.cs" />
+    <Compile Include="MathObjects\Curve.cs" />
     <Compile Include="MathObjects\MathObject.cs" />
     <Compile Include="MathObjects\Helper\NormalDist.cs" />
     <Compile Include="Program.cs" />

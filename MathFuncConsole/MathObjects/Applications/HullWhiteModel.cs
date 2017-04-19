@@ -185,7 +185,7 @@ namespace MathFuncConsole.MathObjects.Applications {
         public double MarketF(double t) {
             if (_mf.ContainsKey(t))
                 return _mf[t];
-            var marketF = Interpolation.Linear(t, _marketT, _marketF);
+            var marketF = Interpolation.LinearFit(t, _marketT, _marketF);
             _mf[t] = marketF;
 
             var delta = 1E-3;
@@ -198,7 +198,7 @@ namespace MathFuncConsole.MathObjects.Applications {
         public double MarketP(double t) {
             if (_mp.ContainsKey(t))
                 return _mp[t];
-            var marketP = Interpolation.Linear(t, _marketT, _marketP);
+            var marketP = Interpolation.LinearFit(t, _marketT, _marketP);
             _mp[t] = marketP;
             return marketP;
         }

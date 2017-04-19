@@ -16,32 +16,42 @@ namespace MathFuncConsole {
             //Demo_HW();
             //Demo_HW_SaaSolver();
 
-            var marketT = new[] {
-                0, 0.255555556, 0.511111111, 0.761111111, 1.013888889, 1.269444444, 1.530555556, 1.775, 2.027777778,
-                2.291666667, 2.541666667, 2.797222222, 3.047222222, 3.302777778, 3.555555556, 3.805555556, 4.058333333,
-                4.313888889, 4.569444444, 4.819444444
-            };
-
-            var marketF = new[] {
-                .0115761, 0.0134633, 0.0145677, 0.015404, 0.016344, 0.0173619, 0.0182408, 0.0188542, 0.0195574,
-                0.0203891, 0.0212078, 0.0219844, 0.0217523, 0.0223657, 0.0229775, 0.0235635, 0.0231886, 0.0236636,
-                0.0241312, 0.0245827
-            };
-
-            var cur1 = new SplineCurve(marketT, marketF);
-
-            var k = 1000;
-            var maxx = marketT[marketT.Length - 1];
-            var newx = Enumerable.Range(0, k).Select(x => x * maxx / k).ToArray();
-
-            var newy = Interpolation.CubicSpline(cur1.Points(), newx);
-
-            var str = string.Join("#", Enumerable.Range(0, k).Select(i => $"{i:D4},{newx[i]:F6},{newy[i]:F6}"));
-            var str2 = string.Join("#", Enumerable.Range(0, marketT.Length).Select(i => $"{i:D4},{marketT[i]:F6},{marketF[i]:F6}"));
-
-            Console.WriteLine();
+            Demo_Interpolation();
 
             Console.Read();
+        }
+
+        private static void Demo_Interpolation() {
+
+            var knownx = new[] {
+                1D, 2, 3, 4, 5, 6, 7, 8, 9, 10
+            };
+
+            var knowny = new[] {
+                0.841470985, 0.909297427, 0.141120008, -0.756802495, -0.958924275,
+                -0.279415498, 0.656986599, 0.989358247, 0.412118485, -0.544021111
+            };
+
+            var cur1 = new Curve(knownx, knowny);
+
+            var curLin = cur1.LinearExpand(100);
+            var curCub = cur1.CubicSplineExpand(15);
+            var curDim = cur1.LeastSquaresExpand(8, 100);
+
+            var s1 = curLin.ToString("\r\n");
+            var s2 = curCub.ToString("\r\n");
+            var s3 = curDim.ToString("\r\n");
+
+
+            var t = Interpolation.CubicSplineFit(cur1.Points(), 1.36);
+
+            Console.WriteLine(s1);
+            Console.WriteLine();
+            Console.WriteLine(s2);
+            Console.WriteLine();
+            Console.WriteLine(s3);
+
+
         }
 
         private static void Demo_HW() {
