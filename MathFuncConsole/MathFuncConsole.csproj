@@ -55,6 +55,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MathObjects\Helper\CubicSplineInterpolation.cs" />
+    <Compile Include="MathObjects\Helper\LinearAlgberaHelper.cs" />
     <Compile Include="MathObjects\Applications\HullWhiteModel.cs" />
     <Compile Include="MathObjects\Helper\Bisection.cs" />
     <Compile Include="MathObjects\Helper\Interpolation.cs" />

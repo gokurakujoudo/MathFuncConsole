@@ -18,6 +18,10 @@ namespace MathFuncConsole {
 
             Demo_Interpolation();
 
+
+            
+
+
             Console.Read();
         }
 
@@ -34,22 +38,26 @@ namespace MathFuncConsole {
 
             var cur1 = new Curve(knownx, knowny);
 
-            var curLin = cur1.LinearExpand(100);
-            var curCub = cur1.CubicSplineExpand(15);
-            var curDim = cur1.LeastSquaresExpand(8, 100);
+            //var curLin = cur1.LinearExpand();
+            var curCub = cur1.CubicSplineExpand();
+            var curCub2 = cur1.CubicSplineExpand2(EnmBoradType.SecondOrder, new[] {0D, 0D});
+            //var curDim = cur1.LeastSquaresFit(4);
 
-            var s1 = curLin.ToString("\r\n");
+
+
+            //var s1 = curLin.ToString("\r\n");
             var s2 = curCub.ToString("\r\n");
-            var s3 = curDim.ToString("\r\n");
+            var s4 = curCub2.ToString("\r\n");
+            //var s3 = curDim.ToString("\r\n");
 
 
             var t = Interpolation.CubicSplineFit(cur1.Points(), 1.36);
 
-            Console.WriteLine(s1);
+            //Console.WriteLine(s1);
             Console.WriteLine();
-            Console.WriteLine(s2);
-            Console.WriteLine();
-            Console.WriteLine(s3);
+            //Console.WriteLine(s2);
+            //Console.WriteLine();
+            Console.WriteLine(s4);
 
 
         }

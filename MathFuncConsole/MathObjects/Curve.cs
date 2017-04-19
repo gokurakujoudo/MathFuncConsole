@@ -30,7 +30,16 @@ namespace MathFuncConsole.MathObjects {
             return new Curve(newx, newy);
         }
 
-        public Curve LeastSquaresExpand(int n, int k = 1000) {
+        public Curve CubicSplineExpand2(EnmBoradType type, double[] arg, int k = 1000) {
+            var maxx = _ordered.Max(tu => tu.x);
+            var minx = _ordered.Min(tu => tu.x);
+            var newx = Enumerable.Range(0, k).Select(x => minx + x * (maxx - minx) / k).ToArray();
+            var cur = CubicSplineInterpolation.CubicInt(X(), Y(), type, arg);
+            var newy = newx.Select(x => cur.Fit(x));
+            return new Curve(newx, newy);
+        }
+
+        public Curve LeastSquaresFit(int n, int k = 1000) {
             var maxx = _ordered.Max(tu => tu.x);
             var minx = _ordered.Min(tu => tu.x);
             var newx = Enumerable.Range(0, k).Select(x => minx + x * (maxx - minx) / k).ToArray();
